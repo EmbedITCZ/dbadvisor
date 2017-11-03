@@ -124,7 +124,7 @@ class IssueBuilderImpl implements IssueBuilder {
             }
             if (stackTraceFilters != null) {
                 for (IssueStackTraceFilter stackTraceFilter : stackTraceFilters) {
-                    stackTrace = Stream.of(stackTrace).filter(stl -> stackTraceFilter.accept(stl)).toArray(String[]::new);
+                    stackTrace = stackTraceFilter.filterStackTrace(stackTrace);
                 }
             }
         }

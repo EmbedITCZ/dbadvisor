@@ -30,4 +30,15 @@ public class IssueBuilderIT extends AbstractIT {
         assertThat(issue.getStackTrace()).isNotEmpty();
     }
 
+    @Test
+    public void shouldFilterStackTrace() {
+        Issue issue = issueBuilder.builder().build();
+
+        String[] stackTrace = issue.getStackTrace();
+
+        for (String stackTraceLine : stackTrace) {
+            assertThat(stackTraceLine).doesNotStartWith("com.github.embeditcz.dbadvisor");
+        }
+    }
+
 }
