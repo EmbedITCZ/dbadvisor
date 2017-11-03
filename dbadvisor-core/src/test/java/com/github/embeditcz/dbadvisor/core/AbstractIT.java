@@ -19,6 +19,14 @@ public abstract class AbstractIT {
     @EnableAutoConfiguration
     public static class TestConfig {
 
+        @Bean
+        public HikariDataSource dataSource() {
+            HikariDataSource ds = new HikariDataSource();
+            ds.setJdbcUrl("jdbc:oracle:thin:@//dockerip:1531/ORCL"); // TODO tmp
+            ds.setUsername("SAA");
+            ds.setPassword("p1");
+            return ds;
+        }
 
     }
 

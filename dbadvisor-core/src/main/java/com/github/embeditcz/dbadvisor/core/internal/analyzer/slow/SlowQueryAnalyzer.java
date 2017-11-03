@@ -1,5 +1,7 @@
 package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
 
+import static java.text.MessageFormat.format;
+
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
 import com.github.embeditcz.dbadvisor.core.internal.analyzer.AbstractQueryAnalyzer;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
@@ -19,8 +21,8 @@ class SlowQueryAnalyzer extends AbstractQueryAnalyzer {
     protected void analyzeImpl(QueryContext ctx) {
         if (isSlowQuery(ctx)) {
             Issue issue = issueBuilder.builder()
-                    .type("SLOW_QUERY")
-                    .description("slow query time " + ctx.getExecInfo().getElapsedTime())
+                    .type("Slow query")
+                    .description(format("The query execution time {0}ms is larger than threshold.", ctx.getExecInfo().getElapsedTime()))
                     .query(ctx)
                     .weight(ctx.getExecInfo().getElapsedTime())
                     .metadata("elapsedTime", ctx.getExecInfo().getElapsedTime())
