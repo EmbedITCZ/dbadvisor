@@ -37,6 +37,7 @@ public class IssueTest {
                 "select * from internet",
                 "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
                 123,
+                "ms",
                 LocalDateTime.now(),
                 Stream.of(Thread.currentThread().getStackTrace()).map(StackTraceElement::toString).toArray(String[]::new),
                 metadata);

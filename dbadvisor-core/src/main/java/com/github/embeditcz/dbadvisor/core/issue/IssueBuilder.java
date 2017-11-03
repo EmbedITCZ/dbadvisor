@@ -20,6 +20,8 @@ public interface IssueBuilder {
 
         Builder weight(long weight);
 
+        Builder weightUnit(String weightUnit);
+
         Builder metadata(String name, Object value);
 
         Issue build();

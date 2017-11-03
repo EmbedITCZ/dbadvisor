@@ -25,6 +25,7 @@ class SlowQueryAnalyzer extends AbstractQueryAnalyzer {
                     .description(format("The query execution time {0}ms is larger than threshold.", ctx.getExecInfo().getElapsedTime()))
                     .query(ctx)
                     .weight(ctx.getExecInfo().getElapsedTime())
+                    .weightUnit("ms")
                     .metadata("elapsedTime", ctx.getExecInfo().getElapsedTime())
                     .build();
 

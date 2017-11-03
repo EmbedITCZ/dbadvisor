@@ -39,6 +39,7 @@ class IssueBuilderImpl implements IssueBuilder {
         private String query;
         private String description;
         private long weight;
+        private String weightUnit;
         private LocalDateTime timestamp;
         private String[] stackTrace;
         private Map<String, Object> metadata = new LinkedHashMap<>();
@@ -74,6 +75,12 @@ class IssueBuilderImpl implements IssueBuilder {
         }
 
         @Override
+        public Builder weightUnit(String weightUnit) {
+            this.weightUnit = weightUnit;
+            return this;
+        }
+
+        @Override
         public Builder metadata(String name, Object value) {
             metadata.put(name, value);
             return this;
@@ -84,7 +91,7 @@ class IssueBuilderImpl implements IssueBuilder {
             resolveTimestamp();
             resolveStackTrace();
             resolveMetadata();
-            return new Issue(type, query, description, weight, timestamp, stackTrace, metadata);
+            return new Issue(type, query, description, weight, weightUnit, timestamp, stackTrace, metadata);
         }
 
         private String resolveQuery(QueryContext ctx) {

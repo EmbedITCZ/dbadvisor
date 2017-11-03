@@ -14,6 +14,7 @@ public class Issue {
     private String query;
     private String description;
     private long weight;
+    private String weightUnit;
     private LocalDateTime timestamp;
     private String[] stackTrace;
     private Map<String, Object> metadata;
