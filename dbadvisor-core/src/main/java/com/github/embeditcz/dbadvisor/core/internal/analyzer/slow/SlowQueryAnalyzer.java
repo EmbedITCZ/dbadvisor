@@ -34,7 +34,7 @@ class SlowQueryAnalyzer extends AbstractQueryAnalyzer {
     }
 
     private boolean isSlowQuery(QueryContext ctx) {
-        return ctx.getExecInfo().getElapsedTime() > properties.getThreshold();
+        return ctx.getExecInfo().getElapsedTime() >= properties.getThreshold();
     }
 
 }

@@ -35,7 +35,7 @@ class Nplus1QueryAnalyzer extends AbstractQueryAnalyzer {
 
             long count = counter.incrementAndGet(query);
 
-            if (count > properties.getThreshold()) {
+            if (count >= properties.getThreshold()) {
                 Issue issue = issueBuilder.builder()
                         .type("N+1")
                         .description("N+1 query issue found")

@@ -34,7 +34,7 @@ public class Nplus1QueryAnalyzerIT extends AbstractIT {
     @Test
     public void shouldDetectNplus1Issue() {
         given(nplus1QueryProperties.isEnabled()).willReturn(true);
-        given(nplus1QueryProperties.getThreshold()).willReturn(2L);
+        given(nplus1QueryProperties.getThreshold()).willReturn(3L);
 
         transactionTemplate.execute(status -> {
             jdbcTemplate.queryForMap("select id, name from (select 1 as id, 'foo' as name from dual) where id = ?", 1);

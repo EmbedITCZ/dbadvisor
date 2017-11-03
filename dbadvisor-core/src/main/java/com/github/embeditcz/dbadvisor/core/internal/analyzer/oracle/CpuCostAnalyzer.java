@@ -10,31 +10,31 @@ import org.springframework.core.convert.support.DefaultConversionService;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CostBaseAnalyzer extends AbstractExecutionPlanAnalyzer {
+public class CpuCostAnalyzer extends AbstractExecutionPlanAnalyzer {
 
     private final ConversionService conversionService = new DefaultConversionService();
-    private CostBaseProperties properties;
+    private CpuCostProperties properties;
 
-    public CostBaseAnalyzer(CostBaseProperties properties) {
+    public CpuCostAnalyzer(CpuCostProperties properties) {
         super(properties::isEnabled);
         this.properties = properties;
     }
 
     @Override
     protected String getName() {
-        return "Cost";
+        return "CPU Cost";
     }
 
     @Override
     protected void analyzeImpl(ExecutionPlanContext ctx) {
         Map<String, Object> firstLine = ctx.getPlanData().get(0);
-        long cost = conversionService.convert(firstLine.get("COST"), Long.class);
+        long cost = conversionService.convert(firstLine.get("CPU_COST"), Long.class);
         if (cost >= properties.getThreshold()) {
             Issue issue = issueBuilder.builder()
                     .type(getName())
                     .query(ctx.getQueryContext())
                     .weight(cost)
-                    .description("Costs for query are over the limit")
+                    .description("CPU costs for query are over the limit")
                     .build();
             issueRepository.addIssue(issue);
         }

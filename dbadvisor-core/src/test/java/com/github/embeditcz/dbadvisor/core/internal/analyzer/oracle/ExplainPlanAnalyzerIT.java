@@ -19,6 +19,15 @@ public class ExplainPlanAnalyzerIT extends AbstractIT {
     @MockBean
     private CostBaseProperties costBaseProperties;
 
+    @MockBean
+    private CpuCostProperties cpuCostProperties;
+
+    @MockBean
+    private IoCostProperties ioCostProperties;
+
+    @MockBean
+    private FullAccessProperties fullAccessProperties;
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -40,9 +49,54 @@ public class ExplainPlanAnalyzerIT extends AbstractIT {
         assertThat(issues).hasSize(1);
 
         Issue issue = issues.get(0);
-        assertThat(issue.getType()).isEqualTo("Cost");
-        assertThat(issue.getQuery()).isEqualTo("select 1 from dual");
-        assertThat(issue.getWeight()).isGreaterThan(0);
+        verifyIssue(issue, "Cost", "select 1 from dual", 0);
+    }
+
+    @Test
+    public void shouldRunCpuBaseAnalyzer() {
+        given(cpuCostProperties.getThreshold()).willReturn(-1L);
+        given(cpuCostProperties.isEnabled()).willReturn(true);
+        jdbcTemplate.execute("select 2 from dual");
+
+        List<Issue> issues = issueRepository.getIssues();
+        assertThat(issues).hasSize(1);
+
+        Issue issue = issues.get(0);
+        verifyIssue(issue, "CPU Cost", "select 2 from dual", 0);
+    }
+
+
+    @Test
+    public void shouldRunIoCostAnalyzer() {
+        given(ioCostProperties.getThreshold()).willReturn(-1L);
+        given(ioCostProperties.isEnabled()).willReturn(true);
+        jdbcTemplate.execute("select 3 from dual");
+
+        List<Issue> issues = issueRepository.getIssues();
+        assertThat(issues).hasSize(1);
+
+        Issue issue = issues.get(0);
+        verifyIssue(issue, "IO Cost", "select 3 from dual", 0);
+    }
+
+
+    @Test
+    public void shouldRunFullAccessAnalyzer() {
+        given(fullAccessProperties.getThreshold()).willReturn(1L);
+        given(fullAccessProperties.isEnabled()).willReturn(true);
+        jdbcTemplate.queryForList("select * from solicitation s join sol_auth_attempt saa on saa.solicitation_id = s.id where s.first_name = ? and S.last_name = ?", "test", "test");
+
+        List<Issue> issues = issueRepository.getIssues();
+        assertThat(issues).hasSize(1);
+
+        Issue issue = issues.get(0);
+        verifyIssue(issue, "Full Access", "select * from solicitation s join sol_auth_attempt saa on saa.solicitation_id = s.id where s.first_name = ? and S.last_name = ?", 0);
+    }
+
+    private void verifyIssue(Issue issue, String type, String query, long weight) {
+        assertThat(issue.getType()).isEqualTo(type);
+        assertThat(issue.getQuery()).isEqualTo(query);
+        assertThat(issue.getWeight()).isGreaterThan(weight);
         assertThat(issue.getTimestamp()).isNotNull();
         assertThat(issue.getStackTrace()).isNotNull();
         assertThat(issue.getDescription()).isNotEmpty();
