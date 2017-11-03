@@ -1,0 +1,63 @@
+package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
+
+import static java.lang.Long.MAX_VALUE;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
+
+import java.util.List;
+
+import com.github.embeditcz.dbadvisor.core.AbstractIT;
+import com.github.embeditcz.dbadvisor.core.issue.Issue;
+import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
+import org.junit.Before;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+public class SlowQueryAnalyzerIT extends AbstractIT {
+
+    @MockBean
+    private SlowQueryProperties slowQueryProperties;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+    @Autowired
+    private IssueRepository issueRepository;
+
+    @Before
+    public void init() {
+        issueRepository.clear();
+    }
+
+    @Test
+    public void shouldDetectSlowQuery() {
+        given(slowQueryProperties.isEnabled()).willReturn(true);
+        given(slowQueryProperties.getTimeThreshold()).willReturn(-1L);
+
+        jdbcTemplate.execute("select 1 from dual");
+
+        List<Issue> issues = issueRepository.getIssues();
+        assertThat(issues).hasSize(1);
+
+        Issue issue = issues.get(0);
+        assertThat(issue.getType()).isEqualTo("SLOW_QUERY");
+        assertThat(issue.getQuery()).isEqualTo("select 1 from dual");
+        assertThat(issue.getWeight()).isGreaterThan(0);
+        assertThat(issue.getTimestamp()).isNotNull();
+        assertThat(issue.getStackTrace()).isNotNull();
+        assertThat(issue.getDescription()).isNotEmpty();
+        assertThat(issue.getMetadata()).containsKey("elapsedTime");
+    }
+
+    @Test
+    public void shouldNotDetectSlowQuery() {
+        given(slowQueryProperties.isEnabled()).willReturn(true);
+        given(slowQueryProperties.getTimeThreshold()).willReturn(MAX_VALUE);
+
+        jdbcTemplate.execute("select 1 from dual");
+
+        List<Issue> issues = issueRepository.getIssues();
+        assertThat(issues).isEmpty();
+    }
+
+}
