@@ -13,7 +13,7 @@ public class Issue {
     private String description;
     private long weight;
     private LocalDateTime timestamp;
-    private StackTraceElement[] stackTrace;
+    private String[] stackTrace;
     private Map<String, Object> metadata;
 
 }

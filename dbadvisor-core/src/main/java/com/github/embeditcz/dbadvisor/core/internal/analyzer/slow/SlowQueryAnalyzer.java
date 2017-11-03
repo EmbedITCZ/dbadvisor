@@ -3,6 +3,7 @@ package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
 import java.time.LocalDateTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryAnalyzer;
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
@@ -38,7 +39,7 @@ class SlowQueryAnalyzer implements QueryAnalyzer {
             issue.setQuery(resolveQuery(ctx));
             issue.setDescription("slow query " + issue.getQuery() + " time " + ctx.getExecInfo().getElapsedTime());
             issue.setWeight(ctx.getExecInfo().getElapsedTime());
-            issue.setStackTrace(Thread.currentThread().getStackTrace());
+            issue.setStackTrace(Stream.of(Thread.currentThread().getStackTrace()).map(StackTraceElement::toString).toArray(String[]::new));
             issue.setMetadata(metadata);
 
             issueRepository.addIssue(issue);
