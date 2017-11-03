@@ -3,6 +3,8 @@ package com.github.embeditcz.dbadvisor.core.internal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryAnalyzer;
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
@@ -16,6 +18,8 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 class DbAdvisorQueryExecutionListener implements QueryExecutionListener {
+
+    private static final Logger logger = Logger.getLogger("dbadvisor");
 
     private final ApplicationContext applicationContext;
     private List<QueryAnalyzer> analyzers = null;
@@ -38,7 +42,11 @@ class DbAdvisorQueryExecutionListener implements QueryExecutionListener {
     public void afterQuery(ExecutionInfo execInfo, List<QueryInfo> queryInfoList) {
         QueryContext ctx = new QueryContext(execInfo, queryInfoList);
         for (QueryAnalyzer analyzer : getAnalyzers()) {
-            analyzer.analyze(ctx);
+            try {
+                analyzer.analyze(ctx);
+            } catch (Exception e) {
+                logger.log(Level.WARNING, "Analyzer failed", e);
+            }
         }
     }
 
