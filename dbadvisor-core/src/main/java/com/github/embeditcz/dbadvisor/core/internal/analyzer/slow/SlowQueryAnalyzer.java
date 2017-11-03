@@ -1,29 +1,22 @@
 package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
 
-import com.github.embeditcz.dbadvisor.core.analyzer.QueryAnalyzer;
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.AbstractQueryAnalyzer;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
-import com.github.embeditcz.dbadvisor.core.issue.IssueBuilder;
-import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
-@RequiredArgsConstructor
-class SlowQueryAnalyzer implements QueryAnalyzer {
+class SlowQueryAnalyzer extends AbstractQueryAnalyzer {
 
     private final SlowQueryProperties properties;
-    private final IssueBuilder issueBuilder;
-    private final IssueRepository issueRepository;
+
+    SlowQueryAnalyzer(SlowQueryProperties properties) {
+        super(properties::isEnabled, properties::isIgnoreBatch);
+        this.properties = properties;
+    }
 
     @Override
-    public void analyze(QueryContext ctx) {
-        if (isDisabled()) {
-            return;
-        }
-        if (isIgnoreBatch(ctx)) {
-            return;
-        }
+    protected void analyzeImpl(QueryContext ctx) {
         if (isSlowQuery(ctx)) {
             Issue issue = issueBuilder.builder()
                     .type("SLOW_QUERY")
@@ -35,14 +28,6 @@ class SlowQueryAnalyzer implements QueryAnalyzer {
 
             issueRepository.addIssue(issue);
         }
-    }
-
-    private boolean isDisabled() {
-        return !properties.isEnabled();
-    }
-
-    private boolean isIgnoreBatch(QueryContext ctx) {
-        return properties.isIgnoreBatch() && ctx.getExecInfo().isBatch();
     }
 
     private boolean isSlowQuery(QueryContext ctx) {
