@@ -1,0 +1,106 @@
+#wrapper {
+    margin: auto;
+}
+
+#menu {
+    width: 13vw;
+    height: 100vh;
+    background: linear-gradient(to bottom left, steelblue, rgba(0,174,219,1)); /* Standard syntax (must be last) */
+    float: left;
+    border-right: 1px solid white;
+}
+
+#menu h1 {
+    text-align: center;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+#content {
+    overflow: hidden;
+    background-color: white;
+    height: 100vh;
+}
+
+#contentNested {
+    height: 80%;
+    margin: auto;
+    top: 10%;
+    position: relative;
+    width: 80%;
+    background: white;
+    opacity: 0.6;
+}
+
+#ctable {
+    margin: auto;
+    top: 10%;
+    position: relative;
+    width: 80%;
+    opacity: 0.6;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.middle {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.crow {
+    position: relative;
+    border-top: 1px solid #e9ecef;
+    border-right: 1px solid #e9ecef;
+    border-left: 1px solid #e9ecef;
+    height: 60px;
+    -webkit-transition: background 2s ease-out;
+    -moz-transition: background 2s ease-out;
+    -o-transition: background 2s ease-out;
+    transition: background 2s ease-out;
+}
+
+.crow:hover div {
+    background: #e9ecef;
+    cursor: pointer;
+}
+
+.ccol_type {
+    font-size: 1.2em;
+    line-height: 60px;
+    float: left;
+    border-right: 1px solid lightgray;
+    height: 100%;
+    width: 12%;
+}
+
+.ccol_desc {
+    padding-left: 5px;
+    overflow: hidden;
+    height: 100%;
+    background: white;
+}
+
+.ccol_weight {
+    background: lightblue;
+    position: absolute;
+    width: 3.5%;
+    line-height: 19px !important;
+    height: 25px;
+    bottom: 0;
+    right: 0;
+    margin: 7px;
+}
+
+#cquery {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.hidden {
+    border-left: 1px solid #e9ecef;
+    border-right: 1px solid #e9ecef;
+    margin-left: 12%;
+    word-wrap: break-word;
+    display: none;
+    color: red;
+}
