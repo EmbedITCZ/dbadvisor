@@ -3,9 +3,11 @@ package com.github.embeditcz.dbadvisor.core.issue;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Value;
 
-@Data // TODO tmp, should be immutable
+@Value
+@AllArgsConstructor
 public class Issue {
 
     private String type;

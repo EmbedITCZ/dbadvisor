@@ -28,17 +28,18 @@ public class IssueTest {
 
     @Test
     public void shouldBeSerializableToJson() throws JsonProcessingException {
-        Issue issue = new Issue();
-        issue.setType("SLOW QUERY");
-        issue.setDescription("Lorem ipsum dolor sit amet, consectetuer adipiscing elit");
-        issue.setQuery("select * from internet");
-        issue.setWeight(123);
-        issue.setTimestamp(LocalDateTime.now());
-        issue.setStackTrace(Stream.of(Thread.currentThread().getStackTrace()).map(StackTraceElement::toString).toArray(String[]::new));
         Map<String, Object> metadata = new LinkedHashMap<>();
         metadata.put("elapsedTime", 1024);
         metadata.put("hcitrace", "123456789");
-        issue.setMetadata(metadata);
+
+        Issue issue = new Issue(
+                "SLOW QUERY",
+                "select * from internet",
+                "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+                123,
+                LocalDateTime.now(),
+                Stream.of(Thread.currentThread().getStackTrace()).map(StackTraceElement::toString).toArray(String[]::new),
+                metadata);
 
         String json = objectMapper.writeValueAsString(issue);
 
