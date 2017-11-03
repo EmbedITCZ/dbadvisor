@@ -15,7 +15,7 @@ public class SlowQueryPropertiesIT extends AbstractIT {
     public void shouldUseDefaultValues() {
         assertThat(slowQueryProperties.isEnabled()).isTrue();
         assertThat(slowQueryProperties.isIgnoreBatch()).isFalse();
-        assertThat(slowQueryProperties.getTimeThreshold()).isEqualTo(1000);
+        assertThat(slowQueryProperties.getThreshold()).isEqualTo(1000);
     }
 
 }

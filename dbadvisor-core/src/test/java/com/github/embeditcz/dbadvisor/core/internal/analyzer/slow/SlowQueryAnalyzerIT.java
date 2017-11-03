@@ -32,7 +32,7 @@ public class SlowQueryAnalyzerIT extends AbstractIT {
     @Test
     public void shouldDetectSlowQuery() {
         given(slowQueryProperties.isEnabled()).willReturn(true);
-        given(slowQueryProperties.getTimeThreshold()).willReturn(-1L);
+        given(slowQueryProperties.getThreshold()).willReturn(-1L);
 
         jdbcTemplate.execute("select 1 from dual");
 
@@ -52,7 +52,7 @@ public class SlowQueryAnalyzerIT extends AbstractIT {
     @Test
     public void shouldNotDetectSlowQuery() {
         given(slowQueryProperties.isEnabled()).willReturn(true);
-        given(slowQueryProperties.getTimeThreshold()).willReturn(MAX_VALUE);
+        given(slowQueryProperties.getThreshold()).willReturn(MAX_VALUE);
 
         jdbcTemplate.execute("select 1 from dual");
 
