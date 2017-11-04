@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="report.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
           integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="report.css">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -11,9 +11,12 @@
     <div id="menu">
         <h1>DB Advisor</h1>
     </div>
-    <div id="content">
-        <div id="ctable">
-        </div>
+    <div id="contentNested">
+        <table id="ctable" class="table table-bordered table-hover">
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
 </div>
 <div id="footer">
@@ -34,24 +37,61 @@
         }
     }
 
-    $("<div class='crow' id='0'></div>")
-        .append("<div class='ccol_type middle'>" + result.type + "</div>")
-        .append("<div class='ccol_desc'>" + "<p id='cquery'>" + result.query + "</p>" + result.description + "</div>")
-        .append("<div class='badge badge-primary ccol_weight middle'>" + result.weight+" "+result.weightUnit + "</div>")
-        .appendTo("#ctable");
-    $("<div class='hidden' id='0'>" + result.metadata + result.stackTrace + "</div>").appendTo("#ctable");
+    var modes = ["SLOW QUERY", "FULL SCAN"]
 
-    $(".crow").click(function (e) {
-        var id = e.currentTarget.id;
-        console.log(id);
-        var target = $(e.target);
-        console.log(target.parent().find("div.crow"));
-        var hidden = target.parents().find("div.hidden");
-        if ($(hidden[id]).css('display') == "none") {
-            $(hidden[id]).slideDown();
+    $("<tr/>")
+        .append("<td class='type'><h4>" + "FULL SCAN" + "</h4></td>")
+        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'>" + result.query +
+            "</span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span></td>")
+        .appendTo("#ctable");
+    $("<tr/>")
+        .append("<td class='type'><h4>" + result.type + "</h4></td>")
+        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'>" + result.query +
+            "</span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span></td>")
+        .appendTo("#ctable");
+    $("<tr/>")
+        .append("<td class='type'><h4>" + result.type + "</h4></td>")
+        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'>" + result.query +
+            "</span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span>" +
+            "<div class='hidden' id='0'>" + result.metadata.elapsedTime + "<br>" + result.metadata.hcitrace + "<br>" + result.stackTrace + "</div></td>")
+        .appendTo("#ctable");
+
+    $("#ctable tr").click(function (e) {
+        var hidden = $(this).find("div");
+        if (hidden.css("display") == "none") {
+            hidden.slideDown();
         } else {
-            $(hidden[id]).slideUp();
+            hidden.slideUp();
         }
-    });
+    })
+
+    $("<section><h3>Filter</h3><ul id='clist' class='list-group'/></section>").appendTo("#menu")
+    $(modes).each(function (i, val) {
+        $("<li class='list-group-item'><input name='" + val + "' class='operation' type='checkbox'><span>" + val + "</span></li>")
+            .appendTo("#clist")
+    })
+
+    $(".operation").click(function (e) {
+        $(modes).each(function (i, val) {
+            var target = e.target
+            if (target.name == val) {
+                if (target.checked) {
+                    $('h4:not(:contains(' + target.name + '))').parent().parent().hide()
+                    var inputChecked = $('input:checked').not(':contains(' + target.name + ')')
+                    console.log(inputChecked.length)
+                    if (inputChecked.length > 1) {
+                        $(inputChecked.each(function (i, val) {
+                            console.log(val.name)
+                            $('h4:contains(' + val.name + ')').parent().parent().show()
+                        }))
+                    }
+                } else if ($('input:checked').length > 0) {
+                    $('h4:contains(' + target.name + ')').parent().parent().hide()
+                } else {
+                    $('h4:not(:contains(' + target.name + '))').parent().parent().show()
+                }
+            }
+    })
+    })
 </script>
 </html>
