@@ -1,32 +1,85 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
-          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="report.css">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet"
+          href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+        .row-issue:hover {
+            background-color: #fafafa;
+        }
+        section {
+            margin: 10px;
+            position: relative;
+            text-align: left;
+        }
+
+        section h5 {
+            padding-left: 10px;
+        }
+
+        .operation {
+            position: relative;
+            top: 6px;
+            margin-right: 7px;
+            float: left;
+        }
+
+        li {
+            background-color: transparent!important;
+        }
+
+        li span {
+            float: left;
+        }
+
+        .borderless {
+            border: 0;
+            padding-bottom: 0;
+        }
+
+        .navcolor {
+            background-color: #0080a8 !important;
+        }
+
+        #menu {
+            background-color: #fafafa;
+            height: 92vh;
+        }
+
+        .badge_embedit {
+            color: white;
+            background-color: #0080a8;
+        }
+    </style>
 </head>
 <body>
-<div id="wrapper">
-    <div id="menu">
-        <h1>DB Advisor</h1>
-    </div>
-    <div id="contentNested">
-        <table id="ctable" class="table table-bordered table-hover">
-            <tbody>
-
-            </tbody>
-        </table>
+<div id="container-fluid">
+    <nav class="navbar navbar-light bg-info navcolor">
+        <a class="navbar-brand text-white" href="#">DB Advisor issue report</a>
+    </nav>
+    <div class="row">
+        <div id="menu" class="col-2" style="border-right: 1px solid #e9ecef;">
+        </div>
+        <div class="col-10" style="">
+            <div id="issues" style="margin-left: 1em; padding-right: 10px">
+            </div>
+        </div>
     </div>
 </div>
 <div id="footer">
 </div>
 </body>
 <script type="text/javascript">
-    var result = {
-        "type": "SLOW QUERY",
+    var modes = ["Slow Query", "Full Access"]
+
+    var result = [{
+        "type": "Full Access",
         "query": "select * from internet",
-        "description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+        "description": "These objects are accessed by full access: [SOLICITATION]",
         "weight": 123,
         "weightUnit": "ms",
         "timestamp": "2017-11-03T11:50:45.68",
@@ -34,40 +87,51 @@
         "metadata": {
             "elapsedTime": 1024,
             "hcitrace": "123456789"
-        }
-    }
+        }}, {
+        "type": "Slow Query",
+        "query": "select * from internet",
+        "description": "The query execution time {0}ms is larger than threshold.",
+        "weight": 123,
+        "weightUnit": "ms",
+        "timestamp": "2017-11-03T11:50:45.68",
+        "stackTrace": ["java.lang.Thread.getStackTrace(Thread.java:1552)", "com.github.embeditcz.dbadvisor.core.issue.IssueTest.shouldBeSerializableToJson(IssueTest.java:37)", "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)", "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)", "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)", "java.lang.reflect.Method.invoke(Method.java:498)", "org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)", "org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)", "org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)", "org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)", "org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)", "org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)", "org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)", "org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)", "org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)", "org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)", "org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)", "org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)", "org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)", "org.junit.runners.ParentRunner.run(ParentRunner.java:363)", "org.junit.runner.JUnitCore.run(JUnitCore.java:137)", "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:117)", "com.intellij.junit4.JUnit4IdeaTestRunner.startRunnerWithArgs(JUnit4IdeaTestRunner.java:42)", "com.intellij.rt.execution.junit.JUnitStarter.prepareStreamsAndStart(JUnitStarter.java:253)", "com.intellij.rt.execution.junit.JUnitStarter.main(JUnitStarter.java:84)", "sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)", "sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)", "sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)", "java.lang.reflect.Method.invoke(Method.java:498)", "com.intellij.rt.execution.application.AppMain.main(AppMain.java:147)"],
+        "metadata": {
+            "elapsedTime": 1024,
+            "hcitrace": "123456789"
+        }}];
 
-    var modes = ["SLOW QUERY", "FULL SCAN"]
+    $.each(result, function( index, value ) {
+        $("<div class='row row-issue' style='border-bottom: 1px solid #e9ecef; padding-top: 10px; padding-bottom: 10px;'></div>")
+            .append("<div class='col-2'><h6>" + value.type + "</h6></div>")
+            .append("<div class='col-10'>" + "<p>" + value.description + "</p>" + "<pre><code class='sql'>" + value.query + "</code></pre>" +
+                        "<div class='badge badge_embedit float-right'>" + value.weight + " " + value.weightUnit + "</div>" +
+                        "<div style='display: none' class='extra-data'>" +
+                            "<div class='stack-trace'><pre id='stacktrace-" + index + "'>" + "</pre></div>" +
+                            "<div class='meta-data'>" + value.metadata +  "</div>" +
+                        "</div>" +
+                    "</div>")
+            .appendTo("#issues");
+        $.each(result[index].stackTrace, function( stackIndex, stackValue ) {
+            console.info("xxx" + stackValue);
+            $('#stacktrace-' + index).append(stackValue + "\n");
+        })
+    });
 
-    $("<tr/>")
-        .append("<td class='type'><h4>" + "FULL SCAN" + "</h4></td>")
-        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'>" + result.query +
-            "</span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span></td>")
-        .appendTo("#ctable");
-    $("<tr/>")
-        .append("<td class='type'><h4>" + result.type + "</h4></td>")
-        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'>" + result.query +
-            "</span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span></td>")
-        .appendTo("#ctable");
-    $("<tr/>")
-        .append("<td class='type'><h4>" + result.type + "</h4></td>")
-        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'><code>" + result.query +
-            "</code></span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span>" +
-            "<div class='hidden' id='0'>" + result.metadata.elapsedTime + "<br>" + result.metadata.hcitrace + "<br><code>" + result.stackTrace + "</code></div></td>")
-        .appendTo("#ctable");
-
-    $("#ctable tr").click(function (e) {
-        var hidden = $(this).find("div");
-        if (hidden.css("display") == "none") {
-            hidden.slideDown();
+    $('.row-issue').on('click', 'div', function(e) {
+        var target = $(e.target);
+        console.log(target);
+        console.log(target.find(".extra-data"));
+        var hidden = target.find(".extra-data");
+        if ($(hidden).css('display') == "none") {
+            $(hidden).show();
         } else {
-            hidden.slideUp();
+            $(hidden).hide();
         }
-    })
+    });
 
-    $("<section><h3>Filter</h3><ul id='clist' class='list-group'/></section>").appendTo("#menu")
+    $("<section><h5>Issue Type</h5><ul id='clist' class='list-group'/></section>").appendTo("#menu")
     $(modes).each(function (i, val) {
-        $("<li class='list-group-item'><input name='" + val + "' class='operation' type='checkbox'><span>" + val + "</span></li>")
+        $("<li class='list-group-item borderless'><div class='checkbox'><label><input name='" + val + "' class='operation' type='checkbox'>" + val + "</label></div></li>")
             .appendTo("#clist")
     })
 
@@ -76,22 +140,20 @@
             var target = e.target
             if (target.name == val) {
                 if (target.checked) {
-                    $('h4:not(:contains(' + target.name + '))').parent().parent().hide()
+                    $('h6:not(:contains(' + target.name + '))').parent().parent().hide()
                     var inputChecked = $('input:checked').not(':contains(' + target.name + ')')
-                    console.log(inputChecked.length)
                     if (inputChecked.length > 1) {
                         $(inputChecked.each(function (i, val) {
-                            console.log(val.name)
-                            $('h4:contains(' + val.name + ')').parent().parent().show()
+                            $('h6:contains(' + val.name + ')').parent().parent().show()
                         }))
                     }
                 } else if ($('input:checked').length > 0) {
-                    $('h4:contains(' + target.name + ')').parent().parent().hide()
+                    $('h6:contains(' + target.name + ')').parent().parent().hide()
                 } else {
-                    $('h4:not(:contains(' + target.name + '))').parent().parent().show()
+                    $('h6:not(:contains(' + target.name + '))').parent().parent().show()
                 }
             }
-    })
+        })
     })
 </script>
 </html>
