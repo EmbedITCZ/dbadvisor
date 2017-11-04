@@ -10,6 +10,7 @@
     <style>
         .row-issue:hover {
             background-color: #fafafa;
+            cursor: pointer;
         }
 
         section {
@@ -60,6 +61,9 @@
         .badge_embedit {
             color: white;
             background-color: #0080a8;
+        }
+
+        .label-table {
         }
     </style>
 </head>
@@ -540,21 +544,19 @@
             .append("<div class='col-10'>" + "<p>" + value.description + "</p>" + "<pre><code class='sql code-overflow'>" + value.query + "</code></pre>" +
                 "<div class='badge badge_embedit float-right'>" + value.weight + " " + (value.weightUnit ? value.weightUnit : "") + "</div>" +
                 "<div style='display: none' class='extra-data'>" +
-                "<div class='stack-trace'><pre id='stacktrace-" + index + "'>" + "</pre></div>" +
+                "<div class='stack-trace'><label class='label-table'>Stack trace:</label><pre id='stacktrace-" + index + "'>" + "</pre></div>" +
                 "<div class='meta-data'>" + value.metadata + "</div>" +
                 "</div>" +
                 "</div>")
             .appendTo("#issues");
+
         $.each(resultArray[index].stackTrace, function (stackIndex, stackValue) {
-            console.info("xxx" + stackValue);
             $('#stacktrace-' + index).append(stackValue + "\n");
         })
     });
 
     $('.row-issue').on('click', 'div', function (e) {
         var target = $(e.target);
-        console.log(target);
-        console.log(target.find(".extra-data"));
         var hidden = target.find(".extra-data");
         if ($(hidden).css('display') == "none") {
             $(hidden).show();
