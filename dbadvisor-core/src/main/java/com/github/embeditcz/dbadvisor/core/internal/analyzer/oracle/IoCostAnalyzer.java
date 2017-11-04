@@ -35,6 +35,7 @@ public class IoCostAnalyzer extends AbstractExecutionPlanAnalyzer {
                     .query(ctx.getQueryContext())
                     .weight(cost)
                     .description("IO costs for query are over the limit")
+                    .metadata("elapsedTime", ctx.getQueryContext().getExecInfo().getElapsedTime())
                     .build();
             issueRepository.addIssue(issue);
         }

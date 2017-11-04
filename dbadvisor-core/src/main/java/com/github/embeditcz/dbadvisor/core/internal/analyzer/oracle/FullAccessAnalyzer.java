@@ -51,6 +51,7 @@ public class FullAccessAnalyzer extends AbstractExecutionPlanAnalyzer {
                     .query(ctx.getQueryContext())
                     .weight(objects.size())
                     .description(format("These objects are accessed by full access: %s", objects))
+                    .metadata("elapsedTime", ctx.getQueryContext().getExecInfo().getElapsedTime())
                     .build();
             issueRepository.addIssue(issue);
         }
