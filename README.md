@@ -23,6 +23,7 @@ public class MyAppConfiguration {
 
 ## Configuration
 Configuration for dbadvisor is provided by environment. The list of all environment variables:
+
 | Property name                              | Defaul value |
 | ---                                        | ---          |
 | dbadvisor.nplus1.enabled                   | true         |
