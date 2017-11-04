@@ -556,12 +556,11 @@
     });
 
     $('.row-issue').on('click', 'div', function (e) {
-        var target = $(e.target);
-        var hidden = target.find(".extra-data");
+        var hidden = $(this).parent().find(".extra-data");
         if ($(hidden).css('display') == "none") {
-            $(hidden).show();
+            $(hidden).slideDown();
         } else {
-            $(hidden).hide();
+            $(hidden).slideUp();
         }
     });
 
