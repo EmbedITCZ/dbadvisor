@@ -564,11 +564,11 @@
     $('.row-issue').on('click', 'div', function (e) {
         var hidden = $(this).parent().find(".extra-data");
         if ($(hidden).css('display') == "none") {
-            $(hidden).slideDown();
-            $(this).parent().find(".code-overflow").removeClass("code-overflow").addClass("code-overflow-expand")
+            $(hidden).show();
+            $(this).parent().find(".code-overflow").removeClass("code-overflow").addClass("code-overflow-expand");
         } else {
-            $(hidden).slideUp();
-            $(this).parent().find(".code-overflow-expand").removeClass("code-overflow-expand").addClass("code-overflow")
+            $(hidden).hide();
+            $(this).parent().find(".code-overflow-expand").removeClass("code-overflow-expand").addClass("code-overflow");
         }
     });
 
