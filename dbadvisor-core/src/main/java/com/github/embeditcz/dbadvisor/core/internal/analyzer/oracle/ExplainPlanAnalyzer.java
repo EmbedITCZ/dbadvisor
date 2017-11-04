@@ -2,7 +2,6 @@ package com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle;
 
 import static java.lang.String.format;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -14,6 +13,7 @@ import javax.sql.DataSource;
 import com.github.embeditcz.dbadvisor.core.analyzer.ExecutionPlanAnalyzer;
 import com.github.embeditcz.dbadvisor.core.analyzer.ExecutionPlanContext;
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
+import com.github.embeditcz.dbadvisor.core.internal.ProxyDataSourceUtil;
 import com.github.embeditcz.dbadvisor.core.internal.analyzer.AbstractQueryAnalyzer;
 import net.ttddyy.dsproxy.QueryInfo;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -62,11 +62,9 @@ public class ExplainPlanAnalyzer extends AbstractQueryAnalyzer {
     }
 
     private DataSource resolveDataSource(String dataSourceName) {
-        try {
-            return this.dataSources.get(dataSourceName).unwrap(DataSource.class);
-        } catch (SQLException e) {
-            throw new IllegalStateException("Not able to unwrap datasource", e);
-        }
+        DataSource dataSourceProxy = dataSources.get(dataSourceName);
+        DataSource unwrapedDataSource = ProxyDataSourceUtil.unwrap(dataSourceProxy);
+        return unwrapedDataSource;
     }
 
     private String resolveQuery(QueryContext ctx) {
