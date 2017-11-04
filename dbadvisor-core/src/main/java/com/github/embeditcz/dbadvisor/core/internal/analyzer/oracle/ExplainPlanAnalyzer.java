@@ -15,7 +15,6 @@ import com.github.embeditcz.dbadvisor.core.analyzer.ExecutionPlanContext;
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
 import com.github.embeditcz.dbadvisor.core.internal.ProxyDataSourceUtil;
 import com.github.embeditcz.dbadvisor.core.internal.analyzer.AbstractQueryAnalyzer;
-import net.ttddyy.dsproxy.QueryInfo;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -41,7 +40,7 @@ public class ExplainPlanAnalyzer extends AbstractQueryAnalyzer {
 
     @Override
     protected void analyzeImpl(QueryContext ctx) {
-        String query = resolveQuery(ctx);
+        String query = ctx.resolveQuery();
         if (!processedQueries.contains(query)) {
             DataSource dataSource = resolveDataSource(ctx.getExecInfo().getDataSourceName());
             List<Map<String, Object>> plan = prepareExplainPlan(dataSource, query);
@@ -67,12 +66,4 @@ public class ExplainPlanAnalyzer extends AbstractQueryAnalyzer {
         return unwrapedDataSource;
     }
 
-    private String resolveQuery(QueryContext ctx) {
-        String query = null;
-        if (!ctx.getQueryInfoList().isEmpty()) {
-            QueryInfo queryInfo = ctx.getQueryInfoList().get(0);
-            query = queryInfo.getQuery();
-        }
-        return query;
-    }
 }

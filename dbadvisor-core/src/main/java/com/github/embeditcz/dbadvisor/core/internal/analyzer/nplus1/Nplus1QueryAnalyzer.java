@@ -23,9 +23,9 @@ class Nplus1QueryAnalyzer extends AbstractQueryAnalyzer {
 
     @Override
     protected void analyzeImpl(QueryContext ctx) {
-        if (ctx.getQueryInfoList().size() == 1) {
-            long connectionId = ctx.getExecInfo().getConnectionId();
-            String query = ctx.getQueryInfoList().get(0).getQuery();
+        long connectionId = ctx.getExecInfo().getConnectionId();
+        String query = ctx.resolveQuery();
+        if (query != null) {
 
             Counter counter = counterThreadLocal.get();
             if (counter.connectionId != connectionId) {

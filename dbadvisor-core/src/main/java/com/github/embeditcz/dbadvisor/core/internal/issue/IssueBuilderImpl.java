@@ -11,7 +11,6 @@ import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueBuilder;
 import com.github.embeditcz.dbadvisor.core.issue.IssueMetadataProvider;
 import com.github.embeditcz.dbadvisor.core.issue.IssueStackTraceFilter;
-import net.ttddyy.dsproxy.QueryInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -58,7 +57,7 @@ class IssueBuilderImpl implements IssueBuilder {
 
         @Override
         public Builder query(QueryContext queryContext) {
-            this.query = resolveQuery(queryContext);
+            this.query = queryContext.resolveQuery();
             return this;
         }
 
@@ -92,15 +91,6 @@ class IssueBuilderImpl implements IssueBuilder {
             resolveStackTrace();
             resolveMetadata();
             return new Issue(type, query, description, weight, weightUnit, timestamp, stackTrace, metadata);
-        }
-
-        private String resolveQuery(QueryContext ctx) {
-            String query = null;
-            if (!ctx.getQueryInfoList().isEmpty()) {
-                QueryInfo queryInfo = ctx.getQueryInfoList().get(0);
-                query = queryInfo.getQuery();
-            }
-            return query;
         }
 
         private void resolveTimestamp() {

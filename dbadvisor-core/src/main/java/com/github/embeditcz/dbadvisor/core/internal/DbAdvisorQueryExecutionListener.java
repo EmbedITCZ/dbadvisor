@@ -41,6 +41,13 @@ class DbAdvisorQueryExecutionListener implements QueryExecutionListener {
     @Override
     public void afterQuery(ExecutionInfo execInfo, List<QueryInfo> queryInfoList) {
         QueryContext ctx = new QueryContext(execInfo, queryInfoList);
+        String query = ctx.resolveQuery();
+        if (query != null && query.startsWith("select ")) {
+            analyzeQuery(ctx);
+        }
+    }
+
+    private void analyzeQuery(final QueryContext ctx) {
         for (QueryAnalyzer analyzer : getAnalyzers()) {
             try {
                 analyzer.analyze(ctx);
