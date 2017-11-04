@@ -51,9 +51,9 @@
         .appendTo("#ctable");
     $("<tr/>")
         .append("<td class='type'><h4>" + result.type + "</h4></td>")
-        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'>" + result.query +
-            "</span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span>" +
-            "<div class='hidden' id='0'>" + result.metadata.elapsedTime + "<br>" + result.metadata.hcitrace + "<br>" + result.stackTrace + "</div></td>")
+        .append("<td><span id='description'>" + result.description + "</span><br><span id='query'><code>" + result.query +
+            "</code></span><span id='weight' class='badge badge-primary ccol_weight middle'>" + result.weight + " " + result.weightUnit + "</span>" +
+            "<div class='hidden' id='0'>" + result.metadata.elapsedTime + "<br>" + result.metadata.hcitrace + "<br><code>" + result.stackTrace + "</code></div></td>")
         .appendTo("#ctable");
 
     $("#ctable tr").click(function (e) {
