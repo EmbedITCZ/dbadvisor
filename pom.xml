@@ -61,7 +61,19 @@
         <version.lombok>1.16.16</version.lombok>
         <version.ojdbc6>11.2.0.4.0-atlassian-hosted</version.ojdbc6>
         <version.jackson>2.8.9</version.jackson>
+        <plugin-version.failsafe>2.20.1</plugin-version.failsafe>
     </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${plugin-version.failsafe}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
     <dependencyManagement>
         <dependencies>

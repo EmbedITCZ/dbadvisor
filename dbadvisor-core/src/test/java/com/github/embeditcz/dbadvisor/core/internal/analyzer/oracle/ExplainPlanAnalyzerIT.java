@@ -1,10 +1,5 @@
 package com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-
-import java.util.List;
-
 import com.github.embeditcz.dbadvisor.core.AbstractIT;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
@@ -13,6 +8,11 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 
 public class ExplainPlanAnalyzerIT extends AbstractIT {
 
@@ -84,13 +84,13 @@ public class ExplainPlanAnalyzerIT extends AbstractIT {
     public void shouldRunFullAccessAnalyzer() {
         given(fullAccessProperties.getThreshold()).willReturn(1L);
         given(fullAccessProperties.isEnabled()).willReturn(true);
-        jdbcTemplate.queryForList("select * from solicitation s join sol_auth_attempt saa on saa.solicitation_id = s.id where s.first_name = ? and S.last_name = ?", "test", "test");
+        jdbcTemplate.queryForList("select * from product p join product_type pt on pt.product_type_cd = p.product_type_cd where pt.product_type_cd = ?", "test");
 
         List<Issue> issues = issueRepository.getIssues();
         assertThat(issues).hasSize(1);
 
         Issue issue = issues.get(0);
-        verifyIssue(issue, "Full Access", "select * from solicitation s join sol_auth_attempt saa on saa.solicitation_id = s.id where s.first_name = ? and S.last_name = ?", 0);
+        verifyIssue(issue, "Full Access", "select * from product p join product_type pt on pt.product_type_cd = p.product_type_cd where pt.product_type_cd = ?", 0);
     }
 
     private void verifyIssue(Issue issue, String type, String query, long weight) {

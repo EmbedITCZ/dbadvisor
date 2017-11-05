@@ -1,12 +1,12 @@
 package com.github.embeditcz.dbadvisor.core.internal.issue;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 import com.github.embeditcz.dbadvisor.core.AbstractIT;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueBuilder;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class IssueBuilderIT extends AbstractIT {
 
