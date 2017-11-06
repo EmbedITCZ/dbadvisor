@@ -59,7 +59,7 @@
         <version.hikari-cp>2.7.2</version.hikari-cp>
         <version.datasource-proxy>1.4.4</version.datasource-proxy>
         <version.lombok>1.16.16</version.lombok>
-        <version.ojdbc6>11.2.0.3.0</version.ojdbc6>
+        <version.ojdbc6>11.2.0.4.0-atlassian-hosted</version.ojdbc6>
         <version.jackson>2.8.9</version.jackson>
     </properties>
 
@@ -139,5 +139,21 @@
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
     </distributionManagement>
+
+    <repositories>
+        <repository>
+            <id>atlassian-public</id>
+            <url>https://packages.atlassian.com/maven/repository/public</url>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+            <releases>
+                <enabled>true</enabled>
+                <checksumPolicy>warn</checksumPolicy>
+            </releases>
+        </repository>
+    </repositories>
 
 </project>
