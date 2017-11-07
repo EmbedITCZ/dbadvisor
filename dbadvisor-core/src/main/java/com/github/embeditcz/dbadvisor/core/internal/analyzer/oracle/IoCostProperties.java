@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-class IoCostProperties {
+public class IoCostProperties {
 
     private final boolean enabled;
     private final long threshold;

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-class FullAccessProperties {
+public class FullAccessProperties {
 
     private final boolean enabled;
     private final long threshold;

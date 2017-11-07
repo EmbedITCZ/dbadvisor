@@ -1,10 +1,11 @@
-package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
+package com.github.embeditcz.dbadvisor.integrationtest.analyzer.slow;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import com.github.embeditcz.dbadvisor.core.AbstractIT;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.slow.SlowQueryProperties;
+import com.github.embeditcz.dbadvisor.integrationtest.AbstractIT;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class SlowQueryPropertiesIT extends AbstractIT {
 

@@ -1,0 +1,8 @@
+spring:
+  main:
+    banner-mode: 'off'
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@//localhost:1521/XE
+    username: bank
+    password: bank
