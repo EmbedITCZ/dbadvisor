@@ -1,11 +1,5 @@
 package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
 
-import static java.lang.Long.MAX_VALUE;
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.BDDMockito.given;
-
-import java.util.List;
-
 import com.github.embeditcz.dbadvisor.core.AbstractIT;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
@@ -14,6 +8,12 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
+
+import static java.lang.Long.MAX_VALUE;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.BDDMockito.given;
 
 public class SlowQueryAnalyzerIT extends AbstractIT {
 

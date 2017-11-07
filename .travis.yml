@@ -1,3 +1,20 @@
+sudo: required
+
 language: java
 jdk:
   - oraclejdk8
+
+services:
+  - docker
+
+before_install:
+- docker pull sath89/oracle-xe-11g
+- docker run -d --name dbadvisor-test --shm-size=1G -p 8080:8080 -p 1521:1521 -v `pwd`/dbadvisor-core/src/test/resources/scripts:/docker-entrypoint-initdb.d sath89/oracle-xe-11g
+- while true; do if [ $(docker inspect --format="{{.Id}}" dbadvisor-test | xargs docker logs | grep "Database ready to use. Enjoy! ;)" | wc -l) -gt 0 ]; then echo "ready"; break; fi; echo "waiting ..."; sleep 10; done
+
+script:
+- ./mvnw clean install
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
