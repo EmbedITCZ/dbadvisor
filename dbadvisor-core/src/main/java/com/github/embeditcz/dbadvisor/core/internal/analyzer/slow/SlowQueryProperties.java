@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-class SlowQueryProperties {
+public class SlowQueryProperties {
 
     private final boolean enabled;
     private final boolean ignoreBatch;

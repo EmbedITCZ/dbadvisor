@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-class Nplus1QueryProperties {
+public class Nplus1QueryProperties {
 
     private final boolean enabled;
     private final long threshold;

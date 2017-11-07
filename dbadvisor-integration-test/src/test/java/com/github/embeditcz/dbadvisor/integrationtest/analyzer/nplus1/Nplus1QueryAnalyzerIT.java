@@ -1,13 +1,14 @@
-package com.github.embeditcz.dbadvisor.core.internal.analyzer.nplus1;
+package com.github.embeditcz.dbadvisor.integrationtest.analyzer.nplus1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.BDDMockito.given;
 
 import java.util.List;
 
-import com.github.embeditcz.dbadvisor.core.AbstractIT;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.nplus1.Nplus1QueryProperties;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
+import com.github.embeditcz.dbadvisor.integrationtest.AbstractIT;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

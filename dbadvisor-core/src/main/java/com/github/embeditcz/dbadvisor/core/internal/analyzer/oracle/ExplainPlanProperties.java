@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Getter
 @Component
-class ExplainPlanProperties {
+public class ExplainPlanProperties {
 
     private final boolean enabled;
     private final boolean ignoreBatch;

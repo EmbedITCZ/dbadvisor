@@ -1,8 +1,9 @@
-package com.github.embeditcz.dbadvisor.core.internal.analyzer.slow;
+package com.github.embeditcz.dbadvisor.integrationtest.analyzer.slow;
 
-import com.github.embeditcz.dbadvisor.core.AbstractIT;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.slow.SlowQueryProperties;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
+import com.github.embeditcz.dbadvisor.integrationtest.AbstractIT;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,7 +43,7 @@ public class SlowQueryAnalyzerIT extends AbstractIT {
         Issue issue = issues.get(0);
         assertThat(issue.getType()).isEqualTo("Slow query");
         assertThat(issue.getQuery()).isEqualTo("select 1 from dual");
-        assertThat(issue.getWeight()).isGreaterThan(0);
+        assertThat(issue.getWeight()).isGreaterThanOrEqualTo(0);
         assertThat(issue.getTimestamp()).isNotNull();
         assertThat(issue.getStackTrace()).isNotNull();
         assertThat(issue.getDescription()).containsPattern("The query execution time (\\d)ms is larger than threshold.");

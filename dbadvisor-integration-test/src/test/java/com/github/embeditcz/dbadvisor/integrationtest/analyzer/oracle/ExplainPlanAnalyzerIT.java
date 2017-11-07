@@ -1,8 +1,12 @@
-package com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle;
+package com.github.embeditcz.dbadvisor.integrationtest.analyzer.oracle;
 
-import com.github.embeditcz.dbadvisor.core.AbstractIT;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle.CostBaseProperties;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle.CpuCostProperties;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle.FullAccessProperties;
+import com.github.embeditcz.dbadvisor.core.internal.analyzer.oracle.IoCostProperties;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
+import com.github.embeditcz.dbadvisor.integrationtest.AbstractIT;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

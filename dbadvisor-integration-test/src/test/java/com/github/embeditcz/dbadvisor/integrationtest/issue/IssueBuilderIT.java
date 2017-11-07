@@ -1,8 +1,8 @@
-package com.github.embeditcz.dbadvisor.core.internal.issue;
+package com.github.embeditcz.dbadvisor.integrationtest.issue;
 
-import com.github.embeditcz.dbadvisor.core.AbstractIT;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueBuilder;
+import com.github.embeditcz.dbadvisor.integrationtest.AbstractIT;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -16,11 +16,11 @@ public class IssueBuilderIT extends AbstractIT {
     @Test
     public void shouldBuildIssue() {
         Issue issue = issueBuilder.builder()
-                .type("t")
-                .description("d")
-                .weight(0)
-                .metadata("m1", "v1")
-                .build();
+            .type("t")
+            .description("d")
+            .weight(0)
+            .metadata("m1", "v1")
+            .build();
 
         assertThat(issue.getType()).isEqualTo("t");
         assertThat(issue.getDescription()).isEqualTo("d");
