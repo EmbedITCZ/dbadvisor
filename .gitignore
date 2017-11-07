@@ -2,7 +2,8 @@ target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### IntelliJ IDEA ###
-.idea
+.idea/*
+!.idea/codeStyleSettings.xml
 *.iws
 *.iml
 *.ipr
