@@ -1,12 +1,12 @@
 package com.github.embeditcz.dbadvisor.core.internal.issue;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.util.List;
-
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
 import org.junit.Test;
+
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class IssueRepositoryTest {
 
@@ -54,6 +54,19 @@ public class IssueRepositoryTest {
         assertThat(issues).hasSize(100);
         assertThat(issues.get(0).getDescription()).isEqualTo("id110");
         assertThat(issues.get(99).getDescription()).isEqualTo("id11");
+    }
+
+    @Test
+    public void shouldClearIssues() {
+        issueRepository.addIssue(issue("slow", "sql1", 1, "id1"));
+        issueRepository.addIssue(issue("slow", "sql2", 1, "id2"));
+        issueRepository.addIssue(issue("slow", "sql3", 1, "id3"));
+
+        assertThat(issueRepository.getIssues()).hasSize(3);
+
+        issueRepository.clear();
+
+        assertThat(issueRepository.getIssues()).hasSize(0);
     }
 
     private Issue issue(String type, String query, long weight, String description) {
