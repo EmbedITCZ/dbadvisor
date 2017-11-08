@@ -7,6 +7,17 @@ jdk:
 services:
   - docker
 
+env:
+  global:
+    # OSSRH_DEPLOY_USERNAME
+    - secure: "edKibcG1+ztrTHVT0Jc5njDoQ9QkniHMklqLgC+GOgljuT0BcUNP6zghWT0dM8ll76hsn7fYm+qsZKo38N3V2dwhmKihgxIX2ObItcsWeqAoqGFLZGgYNsSdY4Sts1oD8eFm7SbItMSKVdrr0F+GHYXDN2cINbasgz1jG5vxCgjXGFtQqG+BLUrFFqExTVGG64cNZnCoqzI6zsY+JKDqTEp2zB/ztjrDADU6VAI5RbEUS15Q5hfLnCTFamkVXZuh83uiKIdvST6FR13egyVbOZKA1KSpIuSrHk1x6PN7pW2pCyQQB3dlTaVZ9foVHj3oSH+QpJQ3B9/jomIe3VvUrndthkvSr0YbUlVKXqKuSyQ1f10ZC1leNF9SXFLcv0IPsgXCqEoRNuB+oGUCFRIHkNwCK//Fc3JWWNRtcE73Dx/6mb7nEEkdKdHlG1QOuTrdgCK1Zofv/sAnb0sbYTw+oyB7IusAUz2Wg1OzA7YxURweeyiBh7KZCT6ZLCaI9YblMcutqPQeXiWEbL1IwFDYRU2U1jXD3apN5xj70ApRtftt3AzW7Gs7WfvHlswAdPCIWUTycqs/qgS5Zvwax+NbuOAhYFtkSA7DlY1WSevXrJhf5ZjYDW1bwe2Lje/y+H4HE9llmYOGlughBG45s9hLXGj9L3SUysVAb3WFPusy9kI="
+    # OSSRH_DEPLOY_PASSWORD
+    - secure: "FgsglDctUlcBy2x0+lxB/0QCoi/t9Ft3Gsal4AhGTUQb75Wr3ZCaJBkviV+BMcqjjMo/g/rkZOoGNZzn5tc0L7tqxMxfaNbgCWu539QB5aSsN7JOxjB6r/DISD8MogLjCxfLhD5Mayu51748F/r+q00gSl22peMNc/6efC1guOZP2COzXeUowP5n21onPT4DDjgf3Jh2deZaWc+2ceggyi6GKZZpfmgMNhePFgDlu1LoZSeAGwzZX7u3QbZACifHjuB30EsmNKFJm8DTqJAy6FvETAxDy6NY8VQldWYJHhU//3/06rl8/FoEbGhdt9KpqnaK5VpKnJc0TfQNDcMrbvJ+flvw2Lcb9iEIkI2WQEevyUC3zWyAYItDDTInkxqmH7Q2qABRE0ifVox+NFJakSVk/ooQi8QrW3Z17PkTl1mYmtOQedknOL7UN6kNzbnuRDWHzFryyd5NE2YwhqeOlFXCES5lIkXtQiDgEUpqCyGpE+sUK8tJHeoVn+JE1kAtjsoRna2voCjnxy+N+bGRsa7lywbJ4H3iaDWSRMcudtQ6tNr9KWaQTpcu7X6m0zNbzHM0eUhFjuarrk50CDmqjeAIQpPjaFDG6cQ5b1hJdViDwR49nwbqUN+e48qSQp1q7tH8LQQCTdiGj/YoDiAbtFMDCLQtMeSqokOU7DZiHvc="
+    # GPG_KEY_NAME
+    - secure: "Lu3xLu/GQMZz0YPV2sxK5hjV8hFu7XwpEXycTM/ZH4jP6NWwHKLAO/GMIodnAZ+9o4Z77MmCrrZtN9xpejWIrMr1SQziECAwdpqHuPcHO9GNjhZz5e62tSIlwfo0fqZbhv94sEAlj6imAGGDewpftcysI/eUsgOkDVeQBBC7WAcwExIqxurQFNzaETcy51GwsJgq9XhpDLdvXlSkoatUYC0Oc7+M41KYyradhoWn/ksQkFdCuEQsYkk5Mcujuz7QJSZmMmriLCgBO+s/wuRZAt4xJfHr/a/l2mgbQ12Kt7/WQU6AhjVpQGqtYDx4ansJqNXG+/WZ+mhS//Gu0O3GttibkPgilLgbCfSv6gemHhtRMPvS3Dkh8ELc/7iRDWbIzXO6BEwbQSopan4c/iLdPcUPMzKaNhF1vw6EkR52iWbv3gCmBIxq+sDfHmaHs0AtUn6ti5axZWO6rkS1l8aERoDH/jfYIC69xEc1XOvebzTyiDHtnB/kTL0zvgStt3hE1Oyvum30pktaT38/6wZdmCVC3Kfc2Wydjo0SbKaMj0e+eQInKNpXOQlFRKIGKBZhgNMu0v3wmMxbxhXxshjlUGZwOmcvJydoWNsF8ODNeU7PC/g8WSiNJ5KwnHMEwCILjd4IU4+Nv3gKmjhfm0cFXVK/1Oe3iUK91ug7gjvLR7s="
+    # GPG_PASSPHRASE
+    - secure: "c+QodR7lmhCoMR2OoGmaokSeOpGhx8GBW6fV3P6JxrbcU/LPrcDvQytcS70UkiMwdVE1fRiiXkjFuacclkKv9QxvebOBWcHQ6EHmrkYyDGxPDFSOP"
+
 before_install:
 - docker pull sath89/oracle-xe-11g
 - docker run -d --name dbadvisor-test --shm-size=1G -p 1521:1521 -v `pwd`/dbadvisor-integration-test/src/test/resources/scripts:/docker-entrypoint-initdb.d sath89/oracle-xe-11g
@@ -14,6 +25,10 @@ before_install:
 
 script:
 - ./mvnw clean install
+
+after_success:
+- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then openssl aes-256-cbc -K $encrypted_9047eb4b7969_key -iv $encrypted_9047eb4b7969_iv -in cd/codesigning.asc.enc -out cd/codesigning.asc -d; gpg --fast-import cd/codesigning.asc; fi'
+- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn deploy -DskipTests -Prelease --settings cd/settings.xml; fi'
 
 cache:
   directories:
