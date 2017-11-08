@@ -10,25 +10,26 @@ services:
 env:
   global:
     # OSSRH_DEPLOY_USERNAME
-    - secure: "edKibcG1+ztrTHVT0Jc5njDoQ9QkniHMklqLgC+GOgljuT0BcUNP6zghWT0dM8ll76hsn7fYm+qsZKo38N3V2dwhmKihgxIX2ObItcsWeqAoqGFLZGgYNsSdY4Sts1oD8eFm7SbItMSKVdrr0F+GHYXDN2cINbasgz1jG5vxCgjXGFtQqG+BLUrFFqExTVGG64cNZnCoqzI6zsY+JKDqTEp2zB/ztjrDADU6VAI5RbEUS15Q5hfLnCTFamkVXZuh83uiKIdvST6FR13egyVbOZKA1KSpIuSrHk1x6PN7pW2pCyQQB3dlTaVZ9foVHj3oSH+QpJQ3B9/jomIe3VvUrndthkvSr0YbUlVKXqKuSyQ1f10ZC1leNF9SXFLcv0IPsgXCqEoRNuB+oGUCFRIHkNwCK//Fc3JWWNRtcE73Dx/6mb7nEEkdKdHlG1QOuTrdgCK1Zofv/sAnb0sbYTw+oyB7IusAUz2Wg1OzA7YxURweeyiBh7KZCT6ZLCaI9YblMcutqPQeXiWEbL1IwFDYRU2U1jXD3apN5xj70ApRtftt3AzW7Gs7WfvHlswAdPCIWUTycqs/qgS5Zvwax+NbuOAhYFtkSA7DlY1WSevXrJhf5ZjYDW1bwe2Lje/y+H4HE9llmYOGlughBG45s9hLXGj9L3SUysVAb3WFPusy9kI="
+    - secure: "d0s2YJ+0T9JfnEYnVQaj36RIpZVLsSz+RAvZmoX9OMscYFwglPnRQJdQEGUBCFTnfjNgWBtUPKcHaJniXRdqGsN2hhPemzmr82c/ZS52V5Kb1HxBSknIOqv8CapPPrHMSNokg/V1l33kx2wzqxT5Er5LNNKA8gq72on4Ib3VcPZTqHZ6UklnQ6i6Jux5hoWcwqJYg/VnGlaAY9I3EDq0OIi85teEKCVw0BRk/MRhfXqbXIIl9x+viYfAg42ebUYFTD1AwYS35o4bmILxwH8UljqBD1ZPyIs2jMGPlzOrxXpiTUBg+LJ0ZNJKcVQYUJGrAVtSn9IIUiB+N4uHtn/BHJtTk4HhA6SY63dOEmbXWZY3juVjknRbSJRxLCkvkfB+Wqi0AHmF9aKFi8yMQJnTn+fQF807QNcL6B+zjhuQ44qj3g4zGxKUumEQcJsjmuKt8nU2Il3KGZ/Vprv44WQRdgIzJzyQnALleaVgTYAaIWnaPVXnozyh/kLZNTcC+RGYIHMc0gwU1wEbS0EpgLv0Sc+C3L0vnsmRDicGb/8tYv1+AIL6r5p7qOHumr6fWt16+VkDuYNKJTygQQgwEjwF8cZHL4FnlGC3VqhWOFHYG4Oj2pjnenzlX1806z5dRGI8Rq8TGtR4tsI979wIN/EBkxTlSxzdMG+EXu6nNm4sj6U="
     # OSSRH_DEPLOY_PASSWORD
-    - secure: "FgsglDctUlcBy2x0+lxB/0QCoi/t9Ft3Gsal4AhGTUQb75Wr3ZCaJBkviV+BMcqjjMo/g/rkZOoGNZzn5tc0L7tqxMxfaNbgCWu539QB5aSsN7JOxjB6r/DISD8MogLjCxfLhD5Mayu51748F/r+q00gSl22peMNc/6efC1guOZP2COzXeUowP5n21onPT4DDjgf3Jh2deZaWc+2ceggyi6GKZZpfmgMNhePFgDlu1LoZSeAGwzZX7u3QbZACifHjuB30EsmNKFJm8DTqJAy6FvETAxDy6NY8VQldWYJHhU//3/06rl8/FoEbGhdt9KpqnaK5VpKnJc0TfQNDcMrbvJ+flvw2Lcb9iEIkI2WQEevyUC3zWyAYItDDTInkxqmH7Q2qABRE0ifVox+NFJakSVk/ooQi8QrW3Z17PkTl1mYmtOQedknOL7UN6kNzbnuRDWHzFryyd5NE2YwhqeOlFXCES5lIkXtQiDgEUpqCyGpE+sUK8tJHeoVn+JE1kAtjsoRna2voCjnxy+N+bGRsa7lywbJ4H3iaDWSRMcudtQ6tNr9KWaQTpcu7X6m0zNbzHM0eUhFjuarrk50CDmqjeAIQpPjaFDG6cQ5b1hJdViDwR49nwbqUN+e48qSQp1q7tH8LQQCTdiGj/YoDiAbtFMDCLQtMeSqokOU7DZiHvc="
+    - secure: "PofKj21MvLp+9daRf5aqV4iVeHrOmiElQ/7Nc4VA9wSIuMPZ4khxRvOlqONH4Rgey36CMTSN21lnNppyKPLP5qaM+EEdTtaCdXoUfEI9zrVrFzOTykQhjmSD2jEykhW6u1D/Xn6Vuf5Aze1wnKHKDpWt1lvaIWgqND9S5noVRRaDVM+pNNGNDLs/GI8M+v4xdT0WLiFLedEPM2JLyfByxsKaFzRio75eisCYRqK5bjU81/SHAJCKZJa+ikyHE5HvbceWCdH8bYXcUKw3g9cV+D5CEQ669u2xeUAmBZZYGiSKL+RkaZn5cmfSNo8fAHWbYXdzQ3I+n/1BDcZSVyCeEAgrVFmlBqCw8Y2NuOTAKrseaSdE/kPAFJe07sR01evrKppIy6KrZT9Jx7PMeUiMWBNLM4q9OMn2FlWodZuThMNfODKwv2QSEjsZRTtX2KhainOizEea3rRd0nUjStdqS9+AcsyrqQHDGCRV8W3EoIKYEG2m/RljqCHLGafR5GtIX5YTf0bDV/tVBUlPZ9qbwZwuXYvwrGVH1GgZs6/wGTxqlrNBFXddh2mbi5BjnBWEooYG+z+ZMgg50y5ANG2Vxf4OSLDHQmfSQQhKoMT1soaFU2U6IynxhFtV3S2V6XnGUPTyfAigUdKtAAl8TdkZOS6OOn81JauCTtuPxYycZvc="
     # GPG_KEY_NAME
-    - secure: "Lu3xLu/GQMZz0YPV2sxK5hjV8hFu7XwpEXycTM/ZH4jP6NWwHKLAO/GMIodnAZ+9o4Z77MmCrrZtN9xpejWIrMr1SQziECAwdpqHuPcHO9GNjhZz5e62tSIlwfo0fqZbhv94sEAlj6imAGGDewpftcysI/eUsgOkDVeQBBC7WAcwExIqxurQFNzaETcy51GwsJgq9XhpDLdvXlSkoatUYC0Oc7+M41KYyradhoWn/ksQkFdCuEQsYkk5Mcujuz7QJSZmMmriLCgBO+s/wuRZAt4xJfHr/a/l2mgbQ12Kt7/WQU6AhjVpQGqtYDx4ansJqNXG+/WZ+mhS//Gu0O3GttibkPgilLgbCfSv6gemHhtRMPvS3Dkh8ELc/7iRDWbIzXO6BEwbQSopan4c/iLdPcUPMzKaNhF1vw6EkR52iWbv3gCmBIxq+sDfHmaHs0AtUn6ti5axZWO6rkS1l8aERoDH/jfYIC69xEc1XOvebzTyiDHtnB/kTL0zvgStt3hE1Oyvum30pktaT38/6wZdmCVC3Kfc2Wydjo0SbKaMj0e+eQInKNpXOQlFRKIGKBZhgNMu0v3wmMxbxhXxshjlUGZwOmcvJydoWNsF8ODNeU7PC/g8WSiNJ5KwnHMEwCILjd4IU4+Nv3gKmjhfm0cFXVK/1Oe3iUK91ug7gjvLR7s="
+    - secure: "gAGcBUUPoCXAOwWwUxxliQaJVkSM9xz0NXv4oYTsn8xAiGmjC4SW6EqE9br5YINAc64b8UNaUE2rFdvqDTOieB2OgcgKtltSOhzAAYyK1G+0qX7x5NvsF7L7evda2nUAjiEf7J+yhNrTb+qZAGDYr4DnQv2jMVGaJrvEKYPDbukHS1y868UpBtitS9rfMIyZJHQVa7Cdq7iBMIJBnEeUMwiQyXrHY9RwXBkfBzICWkVNmVh5e+FhNye7HbKiLqLvQT5fztySmH9QFUYJh1zH1UYvyxzcVGn6T0wTOO8itZZp+dX4ysKkE6FkiKD64kOEVUUft03F3+/uxo8KlftdQTjCqkNVyitIaKpEXGG5MqqQiUjHUUSb0/LQe7sa6RbG0BKMv/1Kgvn7Bt1i4itwDqK2VnAgb484Zfiirfq1AhfqEXSwoSMxp2zU3fDt1fsI/c/ydzXvuzFkU69/sN5B7P146oljhIrChjXQQZ0OK0poQyNDG3e0kfjWG5XTkz5BVTd5aFAFIEWYOKAe5/GtTSFzCbEDYqoqrWSIyolqTtcaChLSIzOgENjG70bTWN/wT4+btEkZE44zOTU2o4bQ3HQ2fwjb4UDwIt2aP/00yXJFEumMuCcJ978LV7xQRKA0P8jwRn5gfAY3ZFGju53Q9ZXmz21RHo0y7Rin4CoxCcU="
     # GPG_PASSPHRASE
-    - secure: "c+QodR7lmhCoMR2OoGmaokSeOpGhx8GBW6fV3P6JxrbcU/LPrcDvQytcS70UkiMwdVE1fRiiXkjFuacclkKv9QxvebOBWcHQ6EHmrkYyDGxPDFSOP"
+    - secure: "CSpdvulScHTnYwNT6/JsKSMZa7ChE6AtNIZTOBdigrVWshk/sCfgUjWiQVDZlYZquSXA2fdRTazOH7hPthT0S7x/mLh+Ar6gP6J6yp6vYDIuAYeenk+cR5bbBXdwWq35D+razSH+HM3sziFGYUXrqMFuquH8Y9cwJJ6X4nR037vOuwkKTxpfNOYVxsHBibMCUJ7zlNzzi3LIElV+nmRrYAaajdxXZQDWI8rZsGwl3OLKG0OcfP+fJBWlh2dXUUlZogRo94Nd0xRnSLj48lQ3pyE2udf2nNsxzsS3Sr2dXYxdl+xb8c7Xy6elHJiEMAukIxrHp0B+nZL2y72s4w05LJMCSb1hhf/jeUBpWLxx8Y5d2ZibBI5MpnFM6FBzVWOZhEf69sBxRLZFajWMHSEMDv8lNu/FcaOqWCP+M/RZeiP8prTSELuFBD4fYtuxs+0TNaeXSTUWjF5fZFn/jnqxvSxUXd3gdOdJpii+pZkaPooSaao/wk74leYHWPAO91UZWDHE8sgXsGV2Zvbe1JxTjmcSekjqhTI5B6dHoidRLzsRV4H3SGKsZlmTzyjNNinzLRXxavKACasPmg8slK+35NeeJRpZoRfdOTXtBipJruYz47DCTVtSmJdNsh1217o5HEJqDoHcI6L7Ah3UV8uuRXExyYvNSuh8bqHSsEQd7pg="
 
 before_install:
 - docker pull sath89/oracle-xe-11g
 - docker run -d --name dbadvisor-test --shm-size=1G -p 1521:1521 -v `pwd`/dbadvisor-integration-test/src/test/resources/scripts:/docker-entrypoint-initdb.d sath89/oracle-xe-11g
 - while true; do if [ $(docker inspect --format="{{.Id}}" dbadvisor-test | xargs docker logs | grep "Database ready to use. Enjoy! ;)" | wc -l) -gt 0 ]; then echo "ready"; break; fi; echo "waiting ..."; sleep 10; done
 
+install: true
 script:
-- ./mvnw clean install
+- mvn clean install
 
 after_success:
-- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then openssl aes-256-cbc -K $encrypted_9047eb4b7969_key -iv $encrypted_9047eb4b7969_iv -in cd/codesigning.asc.enc -out cd/codesigning.asc -d; gpg --fast-import cd/codesigning.asc; fi'
-- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn deploy -DskipTests -Prelease --settings cd/settings.xml; fi'
+- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then openssl aes-256-cbc -K $encrypted_8528489e01c9_key -iv $encrypted_8528489e01c9_iv -in .mvn/codesigning.asc.enc -out .mvn/codesigning.asc -d; gpg --fast-import .mvn/codesigning.asc; fi'
+- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn deploy -DskipTests -Prelease --settings .mvn/settings.xml; fi'
 
 cache:
   directories:
