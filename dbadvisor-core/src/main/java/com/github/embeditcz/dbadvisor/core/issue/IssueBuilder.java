@@ -1,9 +1,21 @@
 package com.github.embeditcz.dbadvisor.core.issue;
 
-import java.time.LocalDateTime;
-
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
 
+import java.time.LocalDateTime;
+
+/**
+ * Fluent API for building issue.
+ *
+ * <pre>{@code
+ *       Issue issue = issueBuilder.builder()
+ *          .type("t")
+ *          .description("d")
+ *          .weight(0)
+ *          .metadata("m1", "v1")
+ *          .build();
+ * }</pre>
+ */
 public interface IssueBuilder {
 
     Builder builder();
