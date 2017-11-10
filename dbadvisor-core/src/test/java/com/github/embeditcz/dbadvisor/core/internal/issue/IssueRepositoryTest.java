@@ -1,16 +1,27 @@
 package com.github.embeditcz.dbadvisor.core.internal.issue;
 
+import com.github.embeditcz.dbadvisor.core.internal.DbAdvisorProperties;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class IssueRepositoryTest {
 
-    private IssueRepository issueRepository = new IssueRepositoryImpl();
+    private IssueRepository issueRepository;
+
+    @Before
+    public void init() {
+        DbAdvisorProperties properties = mock(DbAdvisorProperties.class);
+        when(properties.getMaxIssuesCountPerType()).thenReturn(100);
+        issueRepository = new IssueRepositoryImpl(properties);
+    }
 
     @Test
     public void shouldSortIssues() {

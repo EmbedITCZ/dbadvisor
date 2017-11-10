@@ -53,3 +53,7 @@ Configuration for DBadvisor is provided by environment. The list of all environm
 | dbadvisor.slowQuery.enabled                | true          |
 | dbadvisor.slowQuery.ignoreBatch            | false         |
 | dbadvisor.slowQuery.threshold              | 1000          |
+| dbadvisor.report.name                      | dbadvisor     |
+| dbadvisor.report.location                  | _temporary folder, see_ `java.io.tmpdir` _system property_ |
+| dbadvisor.report.on-shutdown-hook          | true          |
+| dbadvisor.max-issues-count-per-type        | 100           |

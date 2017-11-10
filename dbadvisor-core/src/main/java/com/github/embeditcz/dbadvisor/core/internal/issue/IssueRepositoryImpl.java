@@ -1,15 +1,16 @@
 package com.github.embeditcz.dbadvisor.core.internal.issue;
 
+import com.github.embeditcz.dbadvisor.core.internal.DbAdvisorProperties;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
 
 @Component
+@RequiredArgsConstructor
 class IssueRepositoryImpl implements IssueRepository {
-
-    private static final int MAX_ISSUES_PER_TYPE = 100;
 
     private static final Comparator<Issue> ISSUE_COMPARATOR =
         Comparator.comparing(Issue::getType)
@@ -18,6 +19,8 @@ class IssueRepositoryImpl implements IssueRepository {
 
 
     private final SortedMap<String, SortedSet<Issue>> issuesByType = new TreeMap<>();
+
+    private final DbAdvisorProperties properties;
 
     @Override
     public synchronized void addIssue(Issue issue) {
@@ -31,7 +34,7 @@ class IssueRepositoryImpl implements IssueRepository {
             }
         } else {
             issues.add(issue);
-            if (issues.size() > MAX_ISSUES_PER_TYPE) {
+            if (issues.size() > properties.getMaxIssuesCountPerType()) {
                 issues.remove(issues.last());
             }
         }
