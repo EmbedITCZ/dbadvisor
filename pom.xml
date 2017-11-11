@@ -57,6 +57,7 @@
         <version.spring-boot>1.5.5.RELEASE</version.spring-boot>
         <version.junit>4.12</version.junit>
         <version.assertj>3.8.0</version.assertj>
+        <version.mockito>2.12.0</version.mockito>
         <version.hikari-cp>2.7.2</version.hikari-cp>
         <version.datasource-proxy>1.4.4</version.datasource-proxy>
         <version.lombok>1.16.16</version.lombok>
@@ -138,6 +139,12 @@
                 <groupId>org.assertj</groupId>
                 <artifactId>assertj-core</artifactId>
                 <version>${version.assertj}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-core</artifactId>
+                <version>${version.mockito}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
