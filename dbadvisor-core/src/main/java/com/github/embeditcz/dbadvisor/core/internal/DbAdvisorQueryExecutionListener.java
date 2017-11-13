@@ -1,25 +1,24 @@
 package com.github.embeditcz.dbadvisor.core.internal;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryAnalyzer;
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import net.ttddyy.dsproxy.ExecutionInfo;
 import net.ttddyy.dsproxy.QueryInfo;
 import net.ttddyy.dsproxy.listener.QueryExecutionListener;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+
+@Log
 @Component
 @RequiredArgsConstructor
 class DbAdvisorQueryExecutionListener implements QueryExecutionListener {
-
-    private static final Logger logger = Logger.getLogger("dbadvisor");
 
     private final ApplicationContext applicationContext;
     private List<QueryAnalyzer> analyzers = null;
@@ -52,7 +51,7 @@ class DbAdvisorQueryExecutionListener implements QueryExecutionListener {
             try {
                 analyzer.analyze(ctx);
             } catch (Exception e) {
-                logger.log(Level.WARNING, "Analyzer failed", e);
+                log.log(Level.WARNING, "Analyzer failed", e);
             }
         }
     }
