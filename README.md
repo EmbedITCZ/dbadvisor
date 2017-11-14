@@ -50,6 +50,8 @@ Configuration for DBadvisor is provided by environment. The list of all environm
 | dbadvisor.oracle.full-access.threshold       | 1             |
 | dbadvisor.oracle.io-cost.enabled             | true          |
 | dbadvisor.oracle.io-cost.threshold           | 1000          |
+| dbadvisor.oracle.foreign-key.enabled         | true          |
+| dbadvisor.oracle.foreign-key.threshold       | 1             |
 | dbadvisor.slow-query.enabled                 | true          |
 | dbadvisor.slow-query.ignore-batch            | false         |
 | dbadvisor.slow-query.threshold               | 1000          |

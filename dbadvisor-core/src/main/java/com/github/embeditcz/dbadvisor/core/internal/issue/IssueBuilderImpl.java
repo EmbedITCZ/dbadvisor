@@ -1,11 +1,5 @@
 package com.github.embeditcz.dbadvisor.core.internal.issue;
 
-import java.time.LocalDateTime;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
-
 import com.github.embeditcz.dbadvisor.core.analyzer.QueryContext;
 import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import com.github.embeditcz.dbadvisor.core.issue.IssueBuilder;
@@ -13,6 +7,12 @@ import com.github.embeditcz.dbadvisor.core.issue.IssueMetadataProvider;
 import com.github.embeditcz.dbadvisor.core.issue.IssueStackTraceFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Stream;
 
 @Component
 class IssueBuilderImpl implements IssueBuilder {
@@ -58,6 +58,12 @@ class IssueBuilderImpl implements IssueBuilder {
         @Override
         public Builder query(QueryContext queryContext) {
             this.query = queryContext.resolveQuery();
+            return this;
+        }
+
+        @Override
+        public Builder query(String query) {
+            this.query = query;
             return this;
         }
 
