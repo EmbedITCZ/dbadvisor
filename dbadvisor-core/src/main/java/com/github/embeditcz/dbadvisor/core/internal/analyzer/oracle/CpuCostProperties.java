@@ -12,8 +12,8 @@ public class CpuCostProperties {
     private final long threshold;
 
     public CpuCostProperties(
-            @Value("${dbadvisor.oracle.cpuCost.enabled:true}") boolean enabled,
-            @Value("${dbadvisor.oracle.cpuCost.threshold:100000}") long threshold) {
+            @Value("${dbadvisor.oracle.cpu-cost.enabled:true}") boolean enabled,
+            @Value("${dbadvisor.oracle.cpu-cost.threshold:100000}") long threshold) {
         this.enabled = enabled;
         this.threshold = threshold;
     }

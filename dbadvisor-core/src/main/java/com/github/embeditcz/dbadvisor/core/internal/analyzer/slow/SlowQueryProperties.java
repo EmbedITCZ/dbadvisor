@@ -13,9 +13,9 @@ public class SlowQueryProperties {
     private final long threshold;
 
     public SlowQueryProperties(
-            @Value("${dbadvisor.slowQuery.enabled:true}") boolean enabled,
-            @Value("${dbadvisor.slowQuery.ignoreBatch:false}") boolean ignoreBatch,
-            @Value("${dbadvisor.slowQuery.threshold:1000}") long threshold) {
+            @Value("${dbadvisor.slow-query.enabled:true}") boolean enabled,
+            @Value("${dbadvisor.slow-query.ignore-batch:false}") boolean ignoreBatch,
+            @Value("${dbadvisor.slow-query.threshold:1000}") long threshold) {
         this.enabled = enabled;
         this.ignoreBatch = ignoreBatch;
         this.threshold = threshold;

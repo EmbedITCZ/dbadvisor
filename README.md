@@ -36,24 +36,24 @@ public class MyAppConfiguration {
 ### Configuration
 Configuration for DBadvisor is provided by environment. The list of all environment variables:
 
-| Property name                              | Default value |
-| ---                                        | ---           |
-| dbadvisor.nplus1.enabled                   | true          |
-| dbadvisor.nplus1.threshold                 | 10            |
-| dbadvisor.oracle.costBase.enabled          | true          |
-| dbadvisor.oracle.costBase.threshold        | 100           |
-| dbadvisor.oracle.cpuCost.enabled           | true          |
-| dbadvisor.oracle.cpuCost.threshold         | 100000        |
-| dbadvisor.oracle.executionPlan.enabled     | true          |
-| dbadvisor.oracle.executionPlan.ignoreBatch | false         |
-| dbadvisor.oracle.fullAccess.enabled        | true          |
-| dbadvisor.oracle.fullAccess.threshold      | 1             |
-| dbadvisor.oracle.ioCost.enabled            | true          |
-| dbadvisor.oracle.ioCost.threshold          | 1000          |
-| dbadvisor.slowQuery.enabled                | true          |
-| dbadvisor.slowQuery.ignoreBatch            | false         |
-| dbadvisor.slowQuery.threshold              | 1000          |
-| dbadvisor.report.name                      | dbadvisor     |
-| dbadvisor.report.location                  | _temporary folder, see_ `java.io.tmpdir` _system property_ |
-| dbadvisor.report.on-shutdown-hook          | true          |
-| dbadvisor.max-issues-count-per-type        | 100           |
+| Property name                                | Default value |
+| ---                                          | ---           |
+| dbadvisor.nplus1.enabled                     | true          |
+| dbadvisor.nplus1.threshold                   | 10            |
+| dbadvisor.oracle.cost-base.enabled           | true          |
+| dbadvisor.oracle.cost-base.threshold         | 100           |
+| dbadvisor.oracle.cpu-cost.enabled            | true          |
+| dbadvisor.oracle.cpu-cost.threshold          | 100000        |
+| dbadvisor.oracle.execution-plan.enabled      | true          |
+| dbadvisor.oracle.execution-plan.ignore-batch | false         |
+| dbadvisor.oracle.full-access.enabled         | true          |
+| dbadvisor.oracle.full-access.threshold       | 1             |
+| dbadvisor.oracle.io-cost.enabled             | true          |
+| dbadvisor.oracle.io-cost.threshold           | 1000          |
+| dbadvisor.slow-query.enabled                 | true          |
+| dbadvisor.slow-query.ignore-batch            | false         |
+| dbadvisor.slow-query.threshold               | 1000          |
+| dbadvisor.report.name                        | dbadvisor     |
+| dbadvisor.report.location                    | _temporary folder, see_ `java.io.tmpdir` _system property_ |
+| dbadvisor.report.on-shutdown-hook            | true          |
+| dbadvisor.max-issues-count-per-type          | 100           |

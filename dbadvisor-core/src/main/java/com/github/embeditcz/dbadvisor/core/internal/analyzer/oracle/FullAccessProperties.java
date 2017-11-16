@@ -12,8 +12,8 @@ public class FullAccessProperties {
     private final long threshold;
 
     public FullAccessProperties(
-            @Value("${dbadvisor.oracle.fullAccess.enabled:true}") boolean enabled,
-            @Value("${dbadvisor.oracle.fullAccess.threshold:1}") long threshold) {
+            @Value("${dbadvisor.oracle.full-access.enabled:true}") boolean enabled,
+            @Value("${dbadvisor.oracle.full-access.threshold:1}") long threshold) {
         this.enabled = enabled;
         this.threshold = threshold;
     }
