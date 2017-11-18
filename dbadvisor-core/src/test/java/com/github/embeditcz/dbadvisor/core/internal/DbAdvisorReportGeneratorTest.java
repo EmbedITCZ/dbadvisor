@@ -39,7 +39,7 @@ public class DbAdvisorReportGeneratorTest {
     }
 
     @Test
-    public void shouldCreateReport() {
+    public void shouldCreateReports() {
         List<Issue> issues = new ArrayList<>();
         issues.add(issue("slow", "select 1", 10));
         issues.add(issue("slow", "select 2", 20));
@@ -51,9 +51,20 @@ public class DbAdvisorReportGeneratorTest {
 
         reportGenerator.generate();
 
-        File file = new File(tmpDir.getRoot(), "dbadvisor.json");
-        assertThat(file).exists().isFile();
-        assertThat(contentOf(file)).startsWith("[ {").contains("\"type\" : \"slow\"").endsWith("} ]");
+        File jsonFile = new File(tmpDir.getRoot(), "dbadvisor.json");
+        assertThat(jsonFile).exists().isFile();
+        assertThat(contentOf(jsonFile))
+            .startsWith("[ {")
+            .contains("\"type\" : \"slow\"")
+            .endsWith("} ]");
+
+        File htmlFile = new File(tmpDir.getRoot(), "dbadvisor.html");
+        assertThat(htmlFile).exists().isFile();
+        assertThat(contentOf(htmlFile).trim())
+            .startsWith("<!DOCTYPE html>")
+            .contains("let data = [ {")
+            .contains("\"type\" : \"slow\"")
+            .endsWith("</html>");
     }
 
     @Test

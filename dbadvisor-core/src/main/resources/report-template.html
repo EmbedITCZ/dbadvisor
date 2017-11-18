@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- Highlighter -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+    <!-- RE:Dom -->
+    <script src="//redom.js.org/redom.min.js"></script>
+    <style>
+        :root {
+            --super-light-gray: #fafafa;
+            --border-gray: #e9ecef;
+        }
+
+        .row-issue:hover {
+            background-color: var(--super-light-gray);
+            cursor: pointer;
+        }
+
+        section {
+            margin: 10px;
+            position: relative;
+            text-align: left;
+        }
+
+        section h5 {
+            padding-left: 10px;
+        }
+
+        .operation {
+            position: relative;
+            top: 6px;
+            margin-right: 7px;
+            float: left;
+        }
+
+        .code-overflow-expand {
+            white-space: normal !important;
+            overflow-x: hidden !important;
+            overflow-y: auto;
+        }
+
+        .code-overflow {
+            white-space: nowrap;
+            overflow-x: hidden !important;
+            text-overflow: ellipsis;
+        }
+
+        li {
+            background-color: transparent !important;
+        }
+
+        .borderless {
+            border: 0;
+            padding-bottom: 0;
+        }
+
+        #menu {
+            background-color: var(--super-light-gray);
+            height: inherit;
+            min-height: 92.5vh;
+            border-right: 1px solid var(--border-gray);
+        }
+
+        #issues {
+            margin-left: 1em;
+            padding-right: 10px;
+        }
+
+        .row-issue {
+            border-bottom: 1px solid var(--border-gray);
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container-fluid">
+        <nav class="navbar bg-primary">
+            <a class="navbar-brand text-white" href="#">DB Advisor issue report</a>
+        </nav>
+        <div class="row">
+            <div id="menu" class="col-2">
+                <section>
+                    <h5>Issue Type</h5>
+                    <ul id='issueType' class='list-group'/>
+                </section>
+            </div>
+            <div class="col-10">
+                <div id="issues">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    hljs.initHighlightingOnLoad();
+    const { el, mount } = redom;
+
+    let data = [];
+
+    let modes = new Set();
+
+    data.forEach(function(value) {
+        if (!modes.has(value.type)) {
+            modes.add(value.type);
+        }
+    });
+
+    data.forEach(function (value, index) {
+        const issue = el('div.row.row-issue', [
+            el('div.col-2',
+                el('h6', value.type)),
+            el('div.col-10', [
+                el('p', value.description),
+                el('pre',
+                    el('code.sql.zenburn.code-overflow', value.query)),
+                el('div.badge.badge-primary.float-right', value.weight + " " + (value.weightUnit ? value.weightUnit : "")),
+                el('div.extra-data', { style: {display: "none"}},
+                    el('div.stack-trace', [
+                        el('label', 'Stack trace:'),
+                        el('pre', value.stackTrace.join('\n'))
+                    ]))
+            ])
+        ]);
+        // show and hide details
+        issue.onclick = e => {
+            const extraData = e.currentTarget.getElementsByClassName("extra-data")[0];
+            const code = e.currentTarget.getElementsByClassName("sql")[0];
+
+            if (extraData.style.display === "none") {
+                extraData.style.display = "";
+                code.classList.remove("code-overflow");
+            } else {
+                extraData.style.display = "none";
+                code.classList.add("code-overflow");
+            }
+        }
+        mount(document.getElementById('issues'), issue);
+    });
+
+    // generate issue type list
+    modes.forEach( function(val) {
+        const menu = document.getElementById('issueType');
+        const checkbox = el('input.operation', {name: val, type: 'checkbox', checked: true});
+        const item = el('li.list-group-item.borderless',
+            el('div.checkbox',
+                el('label',
+                    checkbox, val)));
+
+        checkbox.onclick = e => {
+            const selectedType = e.currentTarget.parentElement.textContent;
+            const rows = document.getElementsByClassName("row-issue");
+            for (var i = 0; i < rows.length; i++) {
+                const type = rows[i].children[0].children[0].textContent;
+                if (selectedType === type) {
+                    rows[i].style.display = e.currentTarget.checked ? "" : "none";
+                }
+            }
+        }
+
+        mount(menu, item);
+    });
+</script>
+</html>
