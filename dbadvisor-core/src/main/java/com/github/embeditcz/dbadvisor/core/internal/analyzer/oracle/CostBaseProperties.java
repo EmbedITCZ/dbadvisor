@@ -12,8 +12,8 @@ public class CostBaseProperties {
     private final long threshold;
 
     public CostBaseProperties(
-            @Value("${dbadvisor.oracle.costBase.enabled:true}") boolean enabled,
-            @Value("${dbadvisor.oracle.costBase.threshold:100}") long threshold) {
+            @Value("${dbadvisor.oracle.cost-base.enabled:true}") boolean enabled,
+            @Value("${dbadvisor.oracle.cost-base.threshold:100}") long threshold) {
         this.enabled = enabled;
         this.threshold = threshold;
     }

@@ -12,8 +12,8 @@ public class ExplainPlanProperties {
     private final boolean ignoreBatch;
 
     public ExplainPlanProperties(
-            @Value("${dbadvisor.oracle.executionPlan.enabled:true}") boolean enabled,
-            @Value("${dbadvisor.oracle.executionPlan.ignoreBatch:false}") boolean ignoreBatch) {
+            @Value("${dbadvisor.oracle.execution-plan.enabled:true}") boolean enabled,
+            @Value("${dbadvisor.oracle.execution-plan.ignore-batch:false}") boolean ignoreBatch) {
         this.enabled = enabled;
         this.ignoreBatch = ignoreBatch;
     }

@@ -12,8 +12,8 @@ public class IoCostProperties {
     private final long threshold;
 
     public IoCostProperties(
-            @Value("${dbadvisor.oracle.ioCost.enabled:true}") boolean enabled,
-            @Value("${dbadvisor.oracle.ioCost.threshold:1000}") long threshold) {
+            @Value("${dbadvisor.oracle.io-cost.enabled:true}") boolean enabled,
+            @Value("${dbadvisor.oracle.io-cost.threshold:1000}") long threshold) {
         this.enabled = enabled;
         this.threshold = threshold;
     }
