@@ -139,8 +139,10 @@
             if (extraData.style.display === "none") {
                 extraData.style.display = "";
                 code.classList.remove("code-overflow");
+                code.classList.add("code-overflow-expand");
             } else {
                 extraData.style.display = "none";
+                code.classList.remove("code-overflow-expand");
                 code.classList.add("code-overflow");
             }
         }
