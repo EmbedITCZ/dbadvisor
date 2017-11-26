@@ -30,6 +30,8 @@ public interface IssueBuilder {
 
         Builder query(QueryContext queryContext);
 
+        Builder query(String query);
+
         Builder weight(long weight);
 
         Builder weightUnit(String weightUnit);

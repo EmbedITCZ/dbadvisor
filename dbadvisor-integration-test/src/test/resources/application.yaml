@@ -6,3 +6,5 @@ spring:
     url: jdbc:oracle:thin:@//localhost:1521/XE
     username: bank
     password: bank
+
+logging.level.com.github.embeditcz.dbadvisor: TRACE
