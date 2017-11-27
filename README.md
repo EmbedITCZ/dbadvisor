@@ -6,6 +6,14 @@
 
 Clever tool for pointing out potential issues between java application and database.
 
+It helps automatically detect:
+* full access in execution plan
+* expensive execution plans
+* missing index for foreign key
+* slow queries
+* N+1 issue
+ 
+
 ## Usage
 
 ### Dependencies
