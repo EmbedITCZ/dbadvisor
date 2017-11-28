@@ -66,6 +66,7 @@ public class ForeignKeyAnalayzer extends AbstractDatabaseAnalyzer {
                 .type(getName())
                 .weight(foreignKeys.size())
                 .query(FOREIGN_KEY_QUERY)
+                .dataSourceName(ctx.getDataSourceName())
                 .weightUnit("idx")
                 .description(buildDescription(foreignKeys))
                 .build();

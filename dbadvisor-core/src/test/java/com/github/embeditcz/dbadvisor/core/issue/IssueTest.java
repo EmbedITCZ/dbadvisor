@@ -25,6 +25,7 @@ public class IssueTest {
                 "SLOW QUERY",
                 "select * from internet",
                 "Lorem ipsum dolor sit amet, consectetuer adipiscing elit",
+                "dataSource",
                 123,
                 "ms",
                 LocalDateTime.now(),

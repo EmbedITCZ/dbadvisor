@@ -13,6 +13,7 @@ public class Issue {
     private String type;
     private String query;
     private String description;
+    private String dataSourceName;
     private long weight;
     private String weightUnit;
     private LocalDateTime timestamp;
