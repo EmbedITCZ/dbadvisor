@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
     <!-- Highlighter -->
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 
     <!-- RE:Dom -->
-    <script src="//redom.js.org/redom.min.js"></script>
+    <script src="http://redom.js.org/redom.min.js"></script>
     <style>
         :root {
             --super-light-gray: #fafafa;
@@ -124,11 +124,20 @@
                 el('pre',
                     el('code.sql.zenburn.code-overflow', value.query)),
                 el('div.badge.badge-primary.float-right', value.weight + " " + (value.weightUnit ? value.weightUnit : "")),
-                el('div.extra-data', { style: {display: "none"}},
+                el('div.extra-data', { style: {display: "none"}}, [
                     el('div.stack-trace', [
                         el('label', 'Stack trace:'),
-                        el('pre', value.stackTrace.join('\n'))
-                    ]))
+                        el('pre', value.stackTrace ? value.stackTrace.join('\n') : "")
+                    ]),
+                    el('div.timestamp', [
+                        el('label', 'Timestamp:'),
+                        el('var', value.timestamp ? value.timestamp : "")
+                    ]),
+                    el('div.data-source-name', [
+                        el('label', 'Data source name:'),
+                        el('var', value.dataSourceName ? value.dataSourceName : "")
+                    ])
+                ])
             ])
         ]);
         // show and hide details

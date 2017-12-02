@@ -80,8 +80,14 @@ public class IssueRepositoryTest {
         assertThat(issueRepository.getIssues()).hasSize(0);
     }
 
+    @Test
+    public void shouldBeLenientWhenQueryIsNull() {
+        issueRepository.addIssue(issue("slow", null, 0, null));
+        issueRepository.addIssue(issue("slow", null, 1, null));
+    }
+
     private Issue issue(String type, String query, long weight, String description) {
-        return new Issue(type, query, description, weight, null, null, null, null);
+        return new Issue(type, query, description, "dataSource", weight, null, null, null, null);
     }
 
 }

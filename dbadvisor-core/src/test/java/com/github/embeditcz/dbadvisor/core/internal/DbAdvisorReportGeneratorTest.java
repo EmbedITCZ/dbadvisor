@@ -81,7 +81,7 @@ public class DbAdvisorReportGeneratorTest {
     }
 
     private Issue issue(String type, String query, long weight) {
-        return new Issue(type, query, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", weight, "ms", LocalDateTime.now(), null, null);
+        return new Issue(type, query, "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.", "dataSource", weight, "ms", LocalDateTime.now(), null, null);
     }
 
 }

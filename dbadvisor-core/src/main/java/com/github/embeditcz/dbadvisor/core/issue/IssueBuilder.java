@@ -32,6 +32,8 @@ public interface IssueBuilder {
 
         Builder query(String query);
 
+        Builder dataSourceName(String dataSourceName);
+
         Builder weight(long weight);
 
         Builder weightUnit(String weightUnit);

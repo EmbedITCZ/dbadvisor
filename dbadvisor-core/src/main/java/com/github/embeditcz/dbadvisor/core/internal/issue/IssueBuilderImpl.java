@@ -37,6 +37,7 @@ class IssueBuilderImpl implements IssueBuilder {
         private String type;
         private String query;
         private String description;
+        private String dataSourceName;
         private long weight;
         private String weightUnit;
         private LocalDateTime timestamp;
@@ -58,12 +59,19 @@ class IssueBuilderImpl implements IssueBuilder {
         @Override
         public Builder query(QueryContext queryContext) {
             this.query = queryContext.resolveQuery();
+            this.dataSourceName = queryContext.getExecInfo().getDataSourceName();
             return this;
         }
 
         @Override
         public Builder query(String query) {
             this.query = query;
+            return this;
+        }
+
+        @Override
+        public Builder dataSourceName(String dataSourceName) {
+            this.dataSourceName = dataSourceName;
             return this;
         }
 
@@ -89,14 +97,14 @@ class IssueBuilderImpl implements IssueBuilder {
         public Builder metadata(String name, Object value) {
             metadata.put(name, value);
             return this;
-        }
+       }
 
         @Override
         public Issue build() {
             resolveTimestamp();
             resolveStackTrace();
             resolveMetadata();
-            return new Issue(type, query, description, weight, weightUnit, timestamp, stackTrace, metadata);
+            return new Issue(type, query, description, dataSourceName, weight, weightUnit, timestamp, stackTrace, metadata);
         }
 
         private void resolveTimestamp() {

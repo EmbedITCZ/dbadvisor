@@ -15,8 +15,8 @@ class IssueRepositoryImpl implements IssueRepository {
     private static final Comparator<Issue> ISSUE_COMPARATOR =
         Comparator.comparing(Issue::getType)
             .thenComparing(Comparator.comparing(Issue::getWeight).reversed())
-            .thenComparing(Issue::getQuery);
-
+            .thenComparing(Issue::getDataSourceName, Comparator.nullsLast(String::compareTo))
+            .thenComparing(Issue::getQuery, Comparator.nullsLast(String::compareTo));
 
     private final SortedMap<String, SortedSet<Issue>> issuesByType = new TreeMap<>();
 
@@ -26,10 +26,10 @@ class IssueRepositoryImpl implements IssueRepository {
     public synchronized void addIssue(Issue issue) {
         SortedSet<Issue> issues = issuesByType.computeIfAbsent(issue.getType(), (k) -> new TreeSet<>(ISSUE_COMPARATOR));
 
-        Issue issueWithIdenticalQuery = findIssueWithIdenticalQuery(issue, issues);
-        if (issueWithIdenticalQuery != null) {
-            if (issueWithIdenticalQuery.getWeight() < issue.getWeight()) {
-                issues.remove(issueWithIdenticalQuery);
+        Issue similarIssue = findIssueWithIdenticalQueryAndDataSourceName(issue, issues);
+        if (similarIssue != null) {
+            if (similarIssue.getWeight() < issue.getWeight()) {
+                issues.remove(similarIssue);
                 issues.add(issue);
             }
         } else {
@@ -54,11 +54,16 @@ class IssueRepositoryImpl implements IssueRepository {
         issuesByType.clear();
     }
 
-    private Issue findIssueWithIdenticalQuery(Issue issue, SortedSet<Issue> issues) {
-        return issues.stream()
-            .filter(i -> i.getQuery().equals(issue.getQuery()))
-            .findFirst()
-            .orElse(null);
+    private Issue findIssueWithIdenticalQueryAndDataSourceName(Issue issue, SortedSet<Issue> issues) {
+        Issue result = null;
+        if (issue.getQuery() != null) {
+            result = issues.stream()
+                .filter(i -> Objects.equals(i.getQuery(), issue.getQuery()) &&
+                    Objects.equals(i.getDataSourceName(), issue.getDataSourceName()))
+                .findFirst()
+                .orElse(null);
+        }
+        return result;
     }
 
 }
