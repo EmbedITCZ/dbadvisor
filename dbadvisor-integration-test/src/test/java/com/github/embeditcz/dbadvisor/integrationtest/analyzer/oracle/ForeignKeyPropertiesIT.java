@@ -14,7 +14,7 @@ public class ForeignKeyPropertiesIT extends AbstractIT {
 
     @Test
     public void shouldUseDefaultValues() {
-        assertThat(foreignKeyProperties.isEnabled()).isTrue();
+        assertThat(foreignKeyProperties.isEnabled()).isFalse();
         assertThat(foreignKeyProperties.getThreshold()).isEqualTo(1);
     }
 

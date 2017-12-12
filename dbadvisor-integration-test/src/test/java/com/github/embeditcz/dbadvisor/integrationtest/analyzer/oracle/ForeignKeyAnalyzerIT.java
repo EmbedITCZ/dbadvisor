@@ -32,7 +32,7 @@ public class ForeignKeyAnalyzerIT extends AbstractIT {
     }
 
     @Test
-    public void shouldForeignKeyAnalyzer() throws Exception {
+    public void shouldForeignKeyAnalyzer() {
         given(foreignKeyProperties.isEnabled()).willReturn(true);
         given(foreignKeyProperties.getThreshold()).willReturn(1L);
 

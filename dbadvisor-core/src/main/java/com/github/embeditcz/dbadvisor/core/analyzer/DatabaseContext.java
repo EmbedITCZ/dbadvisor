@@ -10,4 +10,5 @@ import javax.sql.DataSource;
 public class DatabaseContext {
     private final String dataSourceName;
     private final DataSource dataSource;
+    private final String schemaName;
 }
