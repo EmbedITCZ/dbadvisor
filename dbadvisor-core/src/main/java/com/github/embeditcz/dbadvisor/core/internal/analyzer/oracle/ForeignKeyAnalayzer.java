@@ -6,8 +6,6 @@ import com.github.embeditcz.dbadvisor.core.issue.Issue;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
@@ -59,7 +57,7 @@ public class ForeignKeyAnalayzer extends AbstractDatabaseAnalyzer {
     @Override
     protected void analyzeImpl(DatabaseContext ctx) {
         JdbcTemplate jdbcTemplate = new JdbcTemplate(ctx.getDataSource());
-        String schemaName = resolveSchemaName(ctx.getDataSource());
+        String schemaName = ctx.getSchemaName();
         List<Map<String, Object>> foreignKeys = jdbcTemplate.queryForList(FOREIGN_KEY_QUERY, schemaName, schemaName);
         if (foreignKeys.size() > 0) {
             Issue issue = issueBuilder.builder()
@@ -84,13 +82,5 @@ public class ForeignKeyAnalayzer extends AbstractDatabaseAnalyzer {
             }
         );
         return description.toString();
-    }
-
-    private String resolveSchemaName(DataSource dataSource) {
-        try {
-            return dataSource.getConnection().getMetaData().getUserName().toUpperCase();
-        } catch (SQLException e) {
-            throw new IllegalStateException("Can not get schema name", e);
-        }
     }
 }
