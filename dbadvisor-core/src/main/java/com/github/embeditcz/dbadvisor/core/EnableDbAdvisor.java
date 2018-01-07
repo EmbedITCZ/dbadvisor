@@ -8,8 +8,8 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * Annotation which enable advisor.
- * Usually is used on application entry point.
+ * Annotation which enable DBadvisor.
+ * Usually is used on application configuration class.
  *
  * <pre>{@code
  *    @literal @Configuration

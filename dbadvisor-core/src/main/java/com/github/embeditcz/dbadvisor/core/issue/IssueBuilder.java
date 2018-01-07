@@ -8,12 +8,12 @@ import java.time.LocalDateTime;
  * Fluent API for building issue.
  *
  * <pre>{@code
- *       Issue issue = issueBuilder.builder()
- *          .type("t")
- *          .description("d")
- *          .weight(0)
- *          .metadata("m1", "v1")
- *          .build();
+ * Issue issue = issueBuilder.builder()
+ *     .type("Slow query")
+ *     .description("The query execution time 1024ms is larger than threshold.")
+ *     .weight(1024)
+ *     .metadata("query", "select * from ...")
+ *     .build();
  * }</pre>
  */
 public interface IssueBuilder {
