@@ -6,6 +6,9 @@ import lombok.Value;
 import java.time.LocalDateTime;
 import java.util.Map;
 
+/**
+ * This class represents issue found during analysis.
+ */
 @Value
 @RequiredArgsConstructor
 public class Issue {

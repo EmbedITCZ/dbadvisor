@@ -3,19 +3,19 @@ package com.github.embeditcz.dbadvisor.core.issue;
 import java.util.List;
 
 /**
- * Repository which holds issues produced via run.
+ * Interface represents repository which holds issues found during analysis.
  */
 public interface IssueRepository {
 
     /**
      * Add issue to repository.
-     * @param issue Issue which will be holden by repository
+     * @param issue
      */
     void addIssue(Issue issue);
 
     /**
      * Get all issues currently holden by repository.
-     * @return List of issues
+     * @return
      */
     List<Issue> getIssues();
 
