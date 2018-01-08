@@ -46,7 +46,7 @@ public class SlowQueryAnalyzerIT extends AbstractIT {
         assertThat(issue.getWeight()).isGreaterThanOrEqualTo(0);
         assertThat(issue.getTimestamp()).isNotNull();
         assertThat(issue.getStackTrace()).isNotNull();
-        assertThat(issue.getDescription()).containsPattern("The query execution time (\\d)ms is larger than threshold.");
+        assertThat(issue.getDescription()).containsPattern("The query execution time (\\d+)ms is larger than threshold.");
         assertThat(issue.getMetadata()).containsKey("elapsedTime");
     }
 
