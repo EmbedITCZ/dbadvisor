@@ -11,12 +11,12 @@ import java.lang.annotation.Target;
  * Annotation which enable DBadvisor.
  * Usually is used on application configuration class.
  *
- * <pre>{@code
- *    @literal @Configuration
- *    @literal @EnableDbAdvisor
+ * <pre><code>
+ *    {@literal @Configuration}
+ *    {@literal @EnableDbAdvisor}
  *     public class MyAppConfiguration {
  *     }
- * }</pre>
+ * </code></pre>
  */
 @Retention(value = java.lang.annotation.RetentionPolicy.RUNTIME)
 @Target(value = { java.lang.annotation.ElementType.TYPE })
