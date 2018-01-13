@@ -11,8 +11,8 @@ import java.util.List;
  * This class is simple implementation of {@link PrivilegedDataSourceProvider}
  * for convenient usage in configuration.
  *
- * <pre>{@code
- * @literal @Bean
+ * <pre><code>
+ * {@literal @Bean}
  * PrivilegedDataSourceProvider privilegedBankDataSource() throws SQLException {
  *     OracleDataSource dataSource = new OracleDataSource();
  *     dataSource.setUser("system");
@@ -25,7 +25,7 @@ import java.util.List;
  *         .schemas(Arrays.asList("BANK"))
  *         .build();
  * }
- * }</pre>
+ * </code></pre>
  */
 @Getter
 @Builder
