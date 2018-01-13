@@ -5,7 +5,7 @@
     <groupId>com.github.embeditcz.dbadvisor</groupId>
     <artifactId>dbadvisor</artifactId>
     <name>dbadvisor</name>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <licenses>
@@ -40,7 +40,7 @@
         <connection>scm:git:https://github.com/EmbedITCZ/dbadvisor.git</connection>
         <developerConnection>scm:git:https://github.com/EmbedITCZ/dbadvisor.git</developerConnection>
         <url>https://github.com/EmbedITCZ/dbadvisor/tree/master</url>
-        <tag>dbadvisor-1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <modules>
