@@ -28,8 +28,8 @@ script:
 - mvn clean install
 
 after_success:
-- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then openssl aes-256-cbc -K $encrypted_8528489e01c9_key -iv $encrypted_8528489e01c9_iv -in .mvn/codesigning.asc.enc -out .mvn/codesigning.asc -d; gpg --fast-import .mvn/codesigning.asc; fi'
-- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "false" ]; then mvn deploy -DskipTests -Prelease --settings .mvn/settings.xml; fi'
+- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then openssl aes-256-cbc -K $encrypted_8528489e01c9_key -iv $encrypted_8528489e01c9_iv -in .mvn/codesigning.asc.enc -out .mvn/codesigning.asc -d; gpg --fast-import .mvn/codesigning.asc; fi'
+- 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" != "false" ]; then mvn deploy -DskipTests -Prelease --settings .mvn/settings.xml; fi'
 
 cache:
   directories:
