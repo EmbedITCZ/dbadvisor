@@ -1,6 +1,6 @@
 # DBadvisor
 
-[![Sonatype Snapshot](https://img.shields.io/nexus/s/https/oss.sonatype.org/com.github.embeditcz.dbadvisor/dbadvisor-core.svg)](https://oss.sonatype.org/content/repositories/snapshots/com/github/embeditcz/dbadvisor/dbadvisor-core/)
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.embeditcz.dbadvisor/dbadvisor-core/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.embeditcz.dbadvisor/dbadvisor-core)
 [![Build Status](https://travis-ci.org/EmbedITCZ/dbadvisor.svg?branch=master)](https://travis-ci.org/EmbedITCZ/dbadvisor)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d999b060669f46a0aeff4448c0834c19)](https://www.codacy.com/app/mbocek/dbadvisor?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=EmbedITCZ/dbadvisor&amp;utm_campaign=Badge_Grade)
 
